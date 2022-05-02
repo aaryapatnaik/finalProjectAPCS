@@ -21,8 +21,7 @@ public class GameObject {
 	
 	/** rect has info about location and dimension of this game object*/
 	private Rectangle rect;
-	/** Color of this object */
-	private Color color;
+
 	/** dx is how far this object moves this Rectangle each time I move
 	 *  dy is how far this object moves the Rectangle each time I move
 	 *  If dy or dx change between moves, it will look like this object is 
@@ -31,12 +30,7 @@ public class GameObject {
 	private double dx, dy;
 	
 	
-	public GameObject(int x, int y, int w, int h, Color c) {
-		this(x,y,w,h,c,0,0);
-	}
-	public GameObject(int x, int y, int w, int h, Color c, int dx, int dy) {
-		rect = new Rectangle(x,y,w,h);
-		color = c;
+	public GameObject(int dx, int dy) {
 		this.dx = dx;
 		this.dy = dy;
 	}
