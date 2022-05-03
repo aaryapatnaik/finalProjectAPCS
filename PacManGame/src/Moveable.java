@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.Rectangle; // should we be using this?
 
 /**
  * Generic GameObject.  This has all the BASIC attributes and behaviors that 
@@ -17,10 +17,13 @@ import java.awt.Rectangle;
  * @author RHanson
  *
  */
-public class GameObject {
+public class Moveable {
 	
 	/** rect has info about location and dimension of this game object*/
 	private Rectangle rect;
+
+	public int spawnX, spawnY; //coordinates for spawn points. Both the Ghosts and the Players will need spawn points.
+
 
 	/** dx is how far this object moves this Rectangle each time I move
 	 *  dy is how far this object moves the Rectangle each time I move
@@ -30,10 +33,13 @@ public class GameObject {
 	private double dx, dy;
 	
 	
-	public GameObject(int dx, int dy) {
+	public Moveable(int dx, int dy, int locX, int locY) { //updated constructor
 		this.dx = dx;
 		this.dy = dy;
+		this.spawnX = locX;
+		this.spawnY = locY;
 	}
+
 	public double getDx() {
 		return dx;
 	}
