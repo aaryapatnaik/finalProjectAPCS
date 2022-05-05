@@ -60,7 +60,6 @@ public class Moveable {
 		this.xPos = this.xPos + dy;
 	}
 
-
 	public Color getColor() {
         return this.color;
     }
