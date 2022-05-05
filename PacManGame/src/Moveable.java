@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle; // should we be using this?
 
 /**
  * Generic GameObject.  This has all the BASIC attributes and behaviors that 
@@ -19,10 +18,7 @@ import java.awt.Rectangle; // should we be using this?
  */
 public class Moveable {
 	
-	/** rect has info about location and dimension of this game object*/
-	private Rectangle rect;
-
-	public int spawnX, spawnY; //coordinates for spawn points. Both the Ghosts and the Players will need spawn points.
+	public int xPos, yPos; //coordinates for spawn points. Both the Ghosts and the Players will need spawn points. 
 
 
 	/** dx is how far this object moves this Rectangle each time I move
@@ -36,8 +32,8 @@ public class Moveable {
 	public Moveable(int dx, int dy, int locX, int locY) { //updated constructor
 		this.dx = dx;
 		this.dy = dy;
-		this.spawnX = locX;
-		this.spawnY = locY;
+		this.xPos = locX;
+		this.yPos = locY;
 	}
 
 	public double getDx() {
@@ -58,14 +54,12 @@ public class Moveable {
 		moveY();
 	}
 	public void moveY() {
-		rect.setLocation(rect.x+0, (int) (rect.y+dy));
+		this.yPos = this.yPos + dy;
 	}
 	public void moveX() {
-		rect.setLocation((int) (rect.x+dx), rect.y+0);
+		this.xPos = this.xPos + dy;
 	}
-	public Rectangle getRect() {
-		return rect;
-	}
+
 
 	public Color getColor() {
         return this.color;
@@ -75,10 +69,10 @@ public class Moveable {
 	public void draw(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
-		g2.fill(rect);
+		g2.fill();
 	}
 	
 	public boolean collidedWith(GameObject go) {
-		return this.rect.intersects(go.rect);
+		return cell.getSolid();
 	}
 }
