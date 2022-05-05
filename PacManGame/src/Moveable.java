@@ -19,9 +19,9 @@ import java.awt.Rectangle;
  */
 public class Moveable {
 	
-	public int xPos, yPos; //coordinates for spawn points. Both the Ghosts and the Players will need spawn points. 
+	/** rect has info about location and dimension of this game object*/
+	private Rectangle rect;
 
-	public rect = new Rectangle;
 	/** dx is how far this object moves this Rectangle each time I move
 	 *  dy is how far this object moves the Rectangle each time I move
 	 *  If dy or dx change between moves, it will look like this object is 
@@ -30,13 +30,10 @@ public class Moveable {
 	private double dx, dy;
 	
 	
-	public Moveable(int dx, int dy, int locX, int locY) { //updated constructor
+	public GameObject(int dx, int dy) {
 		this.dx = dx;
 		this.dy = dy;
-		rect.x = locX;
-		rect.y = locY;
 	}
-
 	public double getDx() {
 		return dx;
 	}
@@ -57,11 +54,14 @@ public class Moveable {
 	}
 
 	public void moveY() {
-		rect.setPosition(rect.y+0, (int) (rect.y+dy));
+		rect.setLocation(rect.x+0, (int) (rect.y+dy));
 	}
 	
 	public void moveX() {
-		rect.setPosition((int)(rect.x + dy), rect.y+0);
+		rect.setLocation((int) (rect.x+dx), rect.y+0);
+	}
+	public Rectangle getRect() {
+		return rect;
 	}
 
 	public Color getColor() {
@@ -76,6 +76,6 @@ public class Moveable {
 	}
 	
 	public boolean collidedWith(GameObject go) {
-		return cell.getSolid();
+		return this.rect.intersects(go.rect);
 	}
 }
