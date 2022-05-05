@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 /**
  * Generic GameObject.  This has all the BASIC attributes and behaviors that 
@@ -20,7 +21,7 @@ public class Moveable {
 	
 	public int xPos, yPos; //coordinates for spawn points. Both the Ghosts and the Players will need spawn points. 
 
-
+	public rect = new Rectangle;
 	/** dx is how far this object moves this Rectangle each time I move
 	 *  dy is how far this object moves the Rectangle each time I move
 	 *  If dy or dx change between moves, it will look like this object is 
@@ -32,8 +33,8 @@ public class Moveable {
 	public Moveable(int dx, int dy, int locX, int locY) { //updated constructor
 		this.dx = dx;
 		this.dy = dy;
-		this.xPos = locX;
-		this.yPos = locY;
+		rect.x = locX;
+		rect.y = locY;
 	}
 
 	public double getDx() {
@@ -49,15 +50,18 @@ public class Moveable {
 	public void setDy(double dy) {
 		this.dy = dy;
 	}
+
 	public void move() {
 		moveX();
 		moveY();
 	}
+
 	public void moveY() {
-		this.yPos = this.yPos + dy;
+		rect.setPosition(rect.y+0, (int) (rect.y+dy));
 	}
+	
 	public void moveX() {
-		this.xPos = this.xPos + dy;
+		rect.setPosition((int)(rect.x + dy), rect.y+0);
 	}
 
 	public Color getColor() {
@@ -68,7 +72,7 @@ public class Moveable {
 	public void draw(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
-		g2.fill();
+		g2.fill(rect);
 	}
 	
 	public boolean collidedWith(GameObject go) {
