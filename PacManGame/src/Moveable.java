@@ -1,7 +1,6 @@
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.*;
 
 /**
  * Generic GameObject.  This has all the BASIC attributes and behaviors that 
@@ -22,6 +21,11 @@ public class Moveable {
 	/** rect has info about location and dimension of this game object*/
 	private Rectangle rect;
 
+
+	private String name; // will be used in main for distinction between ghosts
+	private Image[] imagesIdle;// for animating a character idle
+	private Image[] imagesActive; //for animating an active character
+
 	/** dx is how far this object moves this Rectangle each time I move
 	 *  dy is how far this object moves the Rectangle each time I move
 	 *  If dy or dx change between moves, it will look like this object is 
@@ -30,10 +34,15 @@ public class Moveable {
 	private double dx, dy;
 	
 	
-	public GameObject(int dx, int dy) {
+	public Moveable(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
+		name = na;
+		rect = new Rectangle(spawnX, spawnY, 25, 25);
+		imagesIdle = imgsIdle;
+		imagesActive = imgsActive;
 		this.dx = dx;
 		this.dy = dy;
 	}
+
 	public double getDx() {
 		return dx;
 	}
@@ -60,22 +69,29 @@ public class Moveable {
 	public void moveX() {
 		rect.setLocation((int) (rect.x+dx), rect.y+0);
 	}
+
 	public Rectangle getRect() {
 		return rect;
 	}
 
-	public Color getColor() {
-        return this.color;
+	public Image[] getIdleImageArray() {
+        return this.imagesIdle;
     }
+
+	public Image[] getActiveImagesArray() {
+		return this.imagesActive;
+	}
   
+	
 	/** Pretty basic right now, but can make this way better!*/
-	public void draw(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setColor(color);
-		g2.fill(rect);
+	public void drawIdle(Graphics g) {
+		for (int i = 0; i < imagesIdle.length; i++) {
+			Image img = imagesIdle[i];
+			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+		}
 	}
 	
-	public boolean collidedWith(GameObject go) {
+	public boolean collidedWith(Moveable go) {
 		return this.rect.intersects(go.rect);
 	}
 }
