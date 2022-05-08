@@ -6,7 +6,11 @@ public class MainPacMan {
     private JFrame frame;
 
     public MainPacMan() {
-        frame=new JFrame(title: "Hello World");
+        JFrame frame = new JFrame("PacMan Game by AP, AV, JI, HN");
+        frame.setSize(650, 450);
+        frame.setLayout(null);
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
     public static void main(String args[])
     {
