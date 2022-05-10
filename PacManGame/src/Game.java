@@ -88,4 +88,12 @@ public class Game {
 		System.out.println("Released ^^^^  Up!!");
     }
 
+	public void downHit(ActionEvent e) {
+		System.out.println("Down!!");
+	}
+
+	public void downRelease(ActionEvent e) {
+		System.out.println("Released Down!!");
+	}
+
 }
