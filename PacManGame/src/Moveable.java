@@ -97,7 +97,10 @@ public class Moveable {
 		}
 	}
 	
-	public boolean collidedWith(Moveable go) {
+	public boolean collidedWithMoveable(Moveable go) {
 		return this.rect.intersects(go.rect);
+	}
+	public boolean collidedWithWall(Cell wall) {
+		return this.rect.intersects(wall.Cell);
 	}
 }
