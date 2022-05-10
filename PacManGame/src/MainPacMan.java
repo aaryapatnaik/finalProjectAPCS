@@ -1,5 +1,5 @@
-public class mainPacMan{
+public class MainPacMan{
     public static void main(String[] args) {
-        // do something here...
+        
     }
 }
