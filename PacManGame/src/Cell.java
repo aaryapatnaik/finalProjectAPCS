@@ -1,6 +1,7 @@
 public class Cell {
     private boolean wall;
     private boolean containsFood;
+    private boolean containsBigFood;
     private static double x, y;
     
 
@@ -19,6 +20,10 @@ public class Cell {
 
     public boolean getContainsFood() {
         return containsFood;
+    }
+
+    public boolean getContainsBigFood() {
+        return containsBigFood;
     }
 
 }

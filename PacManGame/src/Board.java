@@ -22,4 +22,16 @@ public class Board {
             gameBoard[i][width-1] = new Cell(true,false);
         }
     }
+
+    /* returns true if there is at least one cell that contains food, returns false otherwise */
+    public boolean containsFood() {
+        for (Cell[] row: gameBoard) {
+            for (Cell column: row) {
+                if (column.getContainsFood()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
