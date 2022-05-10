@@ -90,6 +90,12 @@ public class Moveable {
 			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
 		}
 	}
+	public void drawActive(Graphics g) {
+		for (int i = 0; i < imagesActive.length; i++) {
+			Image img = imagesActive[i];
+			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+		}
+	}
 	
 	public boolean collidedWith(Moveable go) {
 		return this.rect.intersects(go.rect);
