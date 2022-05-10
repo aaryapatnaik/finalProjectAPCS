@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 public class Game {
 
 	private final int x = 374, y=180;
-    private Snake snake = new Snake(x, y, new Color(25,25,150),1);
+    private Player snake = new Snake(x, y, new Color(25,25,150),1);
 	private ArrayList<GameObject> objects = new ArrayList<>();
 
     public Game(){
