@@ -14,6 +14,10 @@ public class Cell {
         containsFood = cf;
     }
 
+    public void setBigFood (boolean cf) {
+        containsBigFood = cf;
+    }
+
     public boolean getWall() {
         return wall;
     }
@@ -25,5 +29,7 @@ public class Cell {
     public boolean getContainsBigFood() {
         return containsBigFood;
     }
+
+
 
 }
