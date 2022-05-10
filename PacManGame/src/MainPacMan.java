@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+public class MainPacMan{
+    public static void main(String[] args) {
+        
+=======
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -25,5 +30,6 @@ public class MainPacMan {
     public static void main(String args[])
     {
         new MainPacMan();
+>>>>>>> befce51716926f859346073dbc0affe032d49ce6
     }
 }
