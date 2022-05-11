@@ -23,7 +23,7 @@ public class MainPacMan{
         myLabel = new JLabel(lasagna);
         
         //Actual frame
-        JFrame frame = new JFrame("PacMan Game by AP, AV, JI, HN");
+        JFrame frame = new JFrame("PacMan Game by AP, AV, HN, JI");
         frame.add(myLabel);
         frame.setSize(800, 800);
         frame.setLayout(null);
@@ -34,22 +34,55 @@ public class MainPacMan{
     public static void main(String args[]) throws InterruptedException
     {
         new MainPacMan();
+        if (/*startbuttonclicked*/){
+            //pacman.turnright
+        }
+        ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
+        ghosts.add(new Ghost(14, 14));
+        ghosts.add(new Ghost(14, 15));
+        ghosts.add(new Ghost(15, 14));
+        ghosts.add(new Ghost(15, 15));
+        int score = 0;
+        int bluetimer = 0;
+        int livesleft = 3;
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                if (/*startbuttonclicked*/){
-                    //pacman.moveright
+                for (ghost g: ghosts){
+                    if (/*pacman.getLocation()*/.equals(g.getLocation())){
+                        if (bluetimer>0){
+                            score+=200;
+                            ghosts.remove(g);
+                            ghosts.add(new Ghost(14, 14));
+                        }
+                        else {
+                            numlives--;
+                            //board.reset
+                            Thread.sleep(3000);
+                            //pacman.turnright
+                            break;
+                        }
+                    }
                 }
-                ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
-                for (int i = 0; i<4; i++){
-                    ghosts.add(new Ghost());
+                for (ghost g: ghosts){
+                    g.move();
+                }
+                if (/*user.hitkey*/){
+                    //pacman.changedirection
+                }
+                //pacman.move();
+                if (cell.containsBigFood()){
+                    //pacman.eatfood
+                    //
                 }
             }
         }
         Timer timer = new Timer(500, taskPerformer);
         timer.setRepeats(true);
         timer.start();
-        Thread.sleep(2500);
-        timer.stop();
+        if (livesleft == 0){
+            Thread.sleep(2500);
+            timer.stop();
+        }
     }
 
 }
