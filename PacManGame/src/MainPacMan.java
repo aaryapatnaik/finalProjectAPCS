@@ -1,18 +1,11 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
+import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-<<<<<<< HEAD
 public class MainPacMan {
-=======
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
+
 
 public class MainPacMan{
->>>>>>> ba9ea19770a9e96f07e73a89dc0140748131ab7c
     private JFrame frame;
     private ImageIcon lasagna;
     private JLabel myLabel;
@@ -41,6 +34,23 @@ public class MainPacMan{
     public static void main(String args[]) throws InterruptedException
     {
         new MainPacMan();
+        ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                if (/*startbuttonclicked*/){
+                    //pacman.moveright
+                }
+                ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
+                for (int i = 0; i<4; i++){
+                    ghosts.add(new Ghost());
+                }
+            }
+        }
+        Timer timer = new Timer(500, taskPerformer);
+        timer.setRepeats(true);
+        timer.start();
+        Thread.sleep(2500);
+        timer.stop();
     }
 
+}
 }
