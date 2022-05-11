@@ -1,22 +1,12 @@
 import java.awt.*;
-
-
 public class Ghost extends Moveable {
-
-    private static boolean isVulnerable;
-
+    private Location l;
     //constructor for the normal ghost
-    public Ghost(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
-        super(na, imgsIdle, imgsActive, dx, dy, spawnX, spawnY);
-        isVulnerable = false;
+    public Ghost(int x, int y){
+        l = new Location(x, y);
 	}
 
-    public boolean getVulnerable() {
-        return isVulnerable;
+    public Location getLocation(){
+        return l;
     }
-
-    public void setVulnerable(boolean ent) {
-        isVulnerable = ent;
-    }
-
 }
