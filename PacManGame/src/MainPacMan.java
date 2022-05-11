@@ -1,7 +1,5 @@
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 public class MainPacMan {
     private JFrame frame;
     private ImageIcon lasagna;
@@ -32,7 +30,7 @@ public class MainPacMan {
         return resizedImg;
     }
     }
-    public static void main(String args[])
+    public static void main(String args[]) throws InterruptedException
     {
         new Display();
 >>>>>>> befce51716926f859346073dbc0affe032d49ce6
