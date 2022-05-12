@@ -81,13 +81,16 @@ public class MainPacMan implements ActionListener{
         frame.setLayout(null);
         frame.setVisible(true);
         */
+
+        new UserInput();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if (e.getSource()==startButton) {
-            System.out.print("clicked");
+            System.out.print("clicked start button ");
+            //do start button stuff
         }
     }
 }
