@@ -14,7 +14,16 @@ public class UserInput extends JFrame implements KeyListener{
         String key = "";
         key += e.getKeyChar();
         if (key.equals("w")) {
-            //start game
+            //move up if possible
+        }
+        else if (key.equals("s")) {
+            //move down if possible
+        }
+        else if (key.equals("a")) {
+            //move left if possible
+        }
+        else if (key.equals("d")) {
+            //move right if possible
         }
     }
     @Override
