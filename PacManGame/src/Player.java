@@ -10,6 +10,5 @@ public class Player extends Moveable {
         super(na, imgsIdle, imgsActive, dx, dy, spawnX, spawnY);
 	}
 
-    /*might be easier for the player to be controlled by w a s d and use a scanner(i think that's what its called)
-    to detect inputs instead of using the arrow keys?*/
+
 }
