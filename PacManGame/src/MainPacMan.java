@@ -83,6 +83,57 @@ public class MainPacMan implements ActionListener{
         */
 
         new UserInput();
+        new MainPacMan();
+        if (/*startbuttonclicked*/){
+            //pacman.turnright
+        }
+        ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
+        ghosts.add(new Ghost(14, 14));
+        ghosts.add(new Ghost(14, 15));
+        ghosts.add(new Ghost(15, 14));
+        ghosts.add(new Ghost(15, 15));
+        int score = 0;
+        int bluetimer = 0;
+        int livesleft = 3;
+        ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                for (ghost g: ghosts){
+                    if (/*pacman.getLocation()*/.equals(g.getLocation())){
+                        if (bluetimer>0){
+                            score+=200;
+                            ghosts.remove(g);
+                            ghosts.add(new Ghost(14, 14));
+                        }
+                        else {
+                            numlives--;
+                            //board.reset
+                            Thread.sleep(3000);
+                            //pacman.turnright
+                            break;
+                        }
+                    }
+                }
+                for (ghost g: ghosts){
+                    g.move();
+                }
+                if (/*user.hitkey*/){
+                    //pacman.changedirection
+                }
+                //pacman.move();
+                if (cell.containsBigFood()){
+                    //pacman.eatfood
+                    //
+                }
+            }
+        }
+        Timer timer = new Timer(500, taskPerformer);
+        timer.setRepeats(true);
+        timer.start();
+        if (livesleft == 0){
+            Thread.sleep(2500);
+            timer.stop();
+        }
+
     }
 
     @Override
