@@ -94,7 +94,7 @@ public class MainPacMan implements ActionListener{
         ghosts.add(new Ghost(15, 15));
         int score = 0;
         int bluetimer = 0;
-        int livesleft = 3;
+        int numlives = 3;
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
                 for (ghost g: ghosts){
@@ -113,7 +113,7 @@ public class MainPacMan implements ActionListener{
                         }
                     }
                 }
-                for (ghost g: ghosts){
+                for (Ghost g: ghosts){
                     g.move();
                 }
                 if (/*user.hitkey*/){
@@ -122,9 +122,22 @@ public class MainPacMan implements ActionListener{
                 //pacman.move();
                 if (cell.containsBigFood()){
                     //pacman.eatfood
-                    //
+                    score+=25;
+                    for (Ghost g: ghosts){
+                        //g.turnBlue
+                    }
+                    bluetimer = 20;
                 }
-            }
+                if (cell.containsFood()){
+                    //pacman.eatfood
+                    score+=10;
+                }
+                bluetimer--;
+                if (!Board.containsfood()){
+                    break;
+                }
+                }
+            } 
         }
         Timer timer = new Timer(500, taskPerformer);
         timer.setRepeats(true);
