@@ -1,12 +1,9 @@
 import java.awt.*;
 public class Ghost extends Moveable {
-    private Location l;
+
     //constructor for the normal ghost
-    public Ghost(int x, int y){
-        l = new Location(x, y);
+    public Ghost(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
+        super(na, imgsIdle, imgsActive, dx, dy, spawnX, spawnY);
 	}
 
-    public Location getLocation(){
-        return l;
-    }
 }

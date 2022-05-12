@@ -34,7 +34,7 @@ public class Moveable {
 	private double dx, dy;
 	
 	/*creates a new moveable with a name, image arrays, the horizontal distance change, the vertical distance change,
-	and the intial location of the rectangle object*/
+	and the intial location of the rectangle object.*/
 
 	public Moveable(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
 		name = na;
@@ -43,6 +43,17 @@ public class Moveable {
 		imagesActive = imgsActive;
 		this.dx = dx;
 		this.dy = dy;
+	}
+
+	//getters in case it is needed for a comparison method of sorts
+	//returns the integer x coordinate of the moveable
+	public int getX() {
+		return (int)rect.x;
+	}
+
+	//returns the integer y coordinate of the moveable
+	public int getY() {
+		return (int)rect.y;
 	}
 
 	//gets horizontal distance change per refresh
@@ -119,8 +130,8 @@ public class Moveable {
 		return this.rect.intersects(go.rect);
 	}
 
-	//return true or false when the player collides with a wall
+	//return true or false when the player collides with a wall(probs don't need this)
 	public boolean collidedWithWall(Cell wall) {
-		return this.rect.intersects(wall.Cell);
+		return wall.getWall();
 	}
 }
