@@ -33,7 +33,9 @@ public class Moveable {
 	 */
 	private double dx, dy;
 	
-	
+	/*creates a new moveable with a name, image arrays, the horizontal distance change, the vertical distance change,
+	and the intial location of the rectangle object*/
+
 	public Moveable(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
 		name = na;
 		rect = new Rectangle(spawnX, spawnY, 25, 25);
@@ -43,53 +45,68 @@ public class Moveable {
 		this.dy = dy;
 	}
 
+	//gets horizontal distance change per refresh
 	public double getDx() {
 		return dx;
 	}
+
+	//sets horizontal distance change per refresh
 	public void setDx(double dx) {
 		this.dx = dx;
 	}
 	
+	//gets vertical distance change per refresh
 	public double getDy() {
 		return dy;
 	}
+
+	//sets vertical distance change per refresh
 	public void setDy(double dy) {
 		this.dy = dy;
 	}
 
+	//moves the rectangle object in both directions
 	public void move() {
 		moveX();
 		moveY();
 	}
 
+	//changes the vertical location of the rectangle by dy
 	public void moveY() {
 		rect.setLocation(rect.x+0, (int) (rect.y+dy));
 	}
 	
+	//changes the horizontal location of the rectangle by dx
 	public void moveX() {
 		rect.setLocation((int) (rect.x+dx), rect.y+0);
 	}
 
+	//returns the rectangle object
 	public Rectangle getRect() {
 		return rect;
 	}
 
+	//returns the array of images for the moveable when it is idle/still
 	public Image[] getIdleImageArray() {
         return this.imagesIdle;
     }
 
+	//returns the array of images for the moveable when it is active/moving
 	public Image[] getActiveImagesArray() {
 		return this.imagesActive;
 	}
   
 	
 	/** Pretty basic right now, but can make this way better!*/
+	/*rather nonfunctional as of right now. Intention was the display the images in the array when the player moves.
+	did not consider different image arrays for different directions.*/
 	public void drawIdle(Graphics g) {
 		for (int i = 0; i < imagesIdle.length; i++) {
 			Image img = imagesIdle[i];
 			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
 		}
 	}
+
 	public void drawActive(Graphics g) {
 		for (int i = 0; i < imagesActive.length; i++) {
 			Image img = imagesActive[i];
@@ -97,9 +114,12 @@ public class Moveable {
 		}
 	}
 	
+	//should return true or false when the player collides with a ghost
 	public boolean collidedWithMoveable(Moveable go) {
 		return this.rect.intersects(go.rect);
 	}
+
+	//return true or false when the player collides with a wall
 	public boolean collidedWithWall(Cell wall) {
 		return this.rect.intersects(wall.Cell);
 	}
