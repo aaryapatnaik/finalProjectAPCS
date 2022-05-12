@@ -112,6 +112,7 @@ public class Moveable {
 		return this.imagesActive;
 	}
   
+	//for testing
 	public void testDraw(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
