@@ -1,20 +1,13 @@
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
+import java.io.*;
+import java.util.*:
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 public class MainPacMan implements ActionListener{
     private ImageIcon lasagna;
     private JLabel myLabel;
     private JPanel panel;
     private JButton startButton;
-
     public MainPacMan() throws IOException {
         //Setting JFrame
         JFrame frame= new JFrame("PacMan by AP, AV, JI, HN");   
@@ -46,6 +39,7 @@ public class MainPacMan implements ActionListener{
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
     }
+<<<<<<< HEAD
      
     public static void main(String args[]) throws IOException
     {
@@ -69,6 +63,20 @@ public class MainPacMan implements ActionListener{
             public void actionPerformed(ActionEvent evt){
                 for (ghost g: ghosts){
                     if (pacman.getLocation().equals(g.getLocation())){
+=======
+    private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
+    private static int score = 0;
+    private static int bluetimer = 0;
+    private static int numlives = 3;
+    private static javax.swing.Timer timer;
+
+    public static void turn(){
+        timer = new Timer(500, taskPerformer);
+        ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                for (Ghost g: ghosts){
+                    if (/*pacman.getLocation()*/.equals(g.getLocation())){
+>>>>>>> bcadb224a63559007e4f7134a4a9cc48e9890085
                         if (bluetimer>0){
                             score+=200;
                             ghosts.remove(g);
@@ -76,6 +84,7 @@ public class MainPacMan implements ActionListener{
                         }
                         else {
                             numlives--;
+                            checkLives();
                             //board.reset
                             Thread.sleep(3000);
                             //pacman.turnright
@@ -83,7 +92,7 @@ public class MainPacMan implements ActionListener{
                         }
                     }
                 }
-                for (ghost g: ghosts){
+                for (Ghost g: ghosts){
                     g.move();
                 }
                 if (user.hitkey){
@@ -92,23 +101,61 @@ public class MainPacMan implements ActionListener{
                 //pacman.move();
                 if (cell.containsBigFood()){
                     //pacman.eatfood
-                    //
+                    score+=25;
+                    for (Ghost g: ghosts){
+                        //g.turnBlue
+                    }
+                    bluetimer = 20;
                 }
-            }
+                if (cell.containsFood()){
+                    //pacman.eatfood
+                    score+=10;
+                }
+                bluetimer--;
+                checkExit();
+                }
+            } 
+    }
+    public static void mainAction(){
+        if (/*startbuttonclicked*/){
+            //pacman.turnright
         }
-        Timer timer = new Timer(500, taskPerformer);
+        ghosts.add(new Ghost(14, 14));
+        ghosts.add(new Ghost(14, 15));
+        ghosts.add(new Ghost(15, 14));
+        ghosts.add(new Ghost(15, 15));
+        turn();
         timer.setRepeats(true);
         timer.start();
-        if (livesleft == 0){
-            Thread.sleep(2500);
+
+        }
+    }
+
+    public static void checkLives(){
+        if (numlives == 0){
             timer.stop();
             */
 
         new Animation();
         }
+    }
+    
+    public static void checkExit(){
+        if (!Board.containsFood(){
+            timer.stop();
+        })
+        //end board.display();
+    }
+    public static void main(String args[]) throws IOException
+    {
+        new UserInput();
+        new MainPacMan();
+        mainAction();
+
 
     
 
+    public 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
