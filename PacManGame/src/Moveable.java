@@ -1,6 +1,8 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
 /**
  * Generic GameObject.  This has all the BASIC attributes and behaviors that 
@@ -25,6 +27,9 @@ public class Moveable {
 	private String name; // will be used in main for distinction between ghosts
 	private Image[] imagesIdle;// for animating a character idle
 	private Image[] imagesActive; //for animating an active character
+
+	//for testing
+	private Color color = new Color(255, 255, 0);
 
 	/** dx is how far this object moves this Rectangle each time I move
 	 *  dy is how far this object moves the Rectangle each time I move
@@ -107,6 +112,11 @@ public class Moveable {
 		return this.imagesActive;
 	}
   
+	public void testDraw(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(color);
+		g2.fill(rect);
+	}
 	
 	/** Pretty basic right now, but can make this way better!*/
 	/*rather nonfunctional as of right now. Intention was the display the images in the array when the player moves.
