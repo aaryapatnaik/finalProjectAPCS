@@ -49,18 +49,37 @@ public class MainPacMan implements ActionListener{
      
     public static void main(String args[]) throws IOException
     {
-        new MainPacMan();
-        /*
-        JPanel rpanel = new JPanel();
-        rpanel.setBackground(Color.red);
-        rpanel.setBounds(0,0,250,250);
+        //new MainPacMan();
 
-        JFrame frame = new JFrame();
+        //Layered pane base code
+        /*
+        JLabel labelOne = new JLabel();
+        labelOne.setOpaque(true);
+        labelOne.setBackground(Color.RED);
+        labelOne.setBounds(50,50,200,200);
+
+        JLabel labelTwo = new JLabel();
+        labelTwo.setOpaque(true);
+        labelTwo.setBackground(Color.BLUE);
+        labelTwo.setBounds(150,150,200,200);
+
+        JLabel labelThree = new JLabel();
+        labelThree.setOpaque(true);
+        labelThree.setBackground(Color.GREEN);
+        labelThree.setBounds(250,250,200,200);
+
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setBounds(0,0,500,500);
+        layeredPane.add(labelOne);
+        layeredPane.add(labelTwo);
+        layeredPane.add(labelThree);
+
+        JFrame frame = new JFrame("JLayeredPane");
+        frame.add(layeredPane);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(new Dimension(500,500));
         frame.setLayout(null);
-        frame.setSize(750,750);
         frame.setVisible(true);
-        frame.add(rpanel);
         */
     }
 
