@@ -41,6 +41,10 @@ public class Moveable {
 	/*creates a new moveable with a name, image arrays, the horizontal distance change, the vertical distance change,
 	and the intial location of the rectangle object.*/
 
+	public Moveable() {
+		dx = 0;
+		dy = 0;
+	}
 	public Moveable(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
 		name = na;
 		rect = new Rectangle(spawnX, spawnY, 25, 25);

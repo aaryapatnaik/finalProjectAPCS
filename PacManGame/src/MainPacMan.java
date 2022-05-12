@@ -51,41 +51,11 @@ public class MainPacMan implements ActionListener{
     {
         //new MainPacMan();
 
-        //Layered pane base code
         /*
-        JLabel labelOne = new JLabel();
-        labelOne.setOpaque(true);
-        labelOne.setBackground(Color.RED);
-        labelOne.setBounds(50,50,200,200);
-
-        JLabel labelTwo = new JLabel();
-        labelTwo.setOpaque(true);
-        labelTwo.setBackground(Color.BLUE);
-        labelTwo.setBounds(150,150,200,200);
-
-        JLabel labelThree = new JLabel();
-        labelThree.setOpaque(true);
-        labelThree.setBackground(Color.GREEN);
-        labelThree.setBounds(250,250,200,200);
-
-        JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.setBounds(0,0,500,500);
-        layeredPane.add(labelOne);
-        layeredPane.add(labelTwo);
-        layeredPane.add(labelThree);
-
-        JFrame frame = new JFrame("JLayeredPane");
-        frame.add(layeredPane);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(500,500));
-        frame.setLayout(null);
-        frame.setVisible(true);
-        */
-
         new UserInput();
         new MainPacMan();
-        if (/*startbuttonclicked*/){
-            //pacman.turnright
+        if (startbuttonclicked){
+            pacman.turnright
         }
         ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
         ghosts.add(new Ghost(14, 14));
@@ -98,7 +68,7 @@ public class MainPacMan implements ActionListener{
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
                 for (ghost g: ghosts){
-                    if (/*pacman.getLocation()*/.equals(g.getLocation())){
+                    if (pacman.getLocation().equals(g.getLocation())){
                         if (bluetimer>0){
                             score+=200;
                             ghosts.remove(g);
@@ -116,7 +86,7 @@ public class MainPacMan implements ActionListener{
                 for (ghost g: ghosts){
                     g.move();
                 }
-                if (/*user.hitkey*/){
+                if (user.hitkey){
                     //pacman.changedirection
                 }
                 //pacman.move();
@@ -132,9 +102,12 @@ public class MainPacMan implements ActionListener{
         if (livesleft == 0){
             Thread.sleep(2500);
             timer.stop();
+            */
+
+        new Animation();
         }
 
-    }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
