@@ -1,20 +1,13 @@
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
+import java.io.*;
+import java.util.*:
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 public class MainPacMan implements ActionListener{
     private ImageIcon lasagna;
     private JLabel myLabel;
     private JPanel panel;
     private JButton startButton;
-
     public MainPacMan() throws IOException {
         //Setting JFrame
         JFrame frame= new JFrame("PacMan by AP, AV, JI, HN");   
@@ -46,58 +39,17 @@ public class MainPacMan implements ActionListener{
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
     }
-     
-    public static void main(String args[]) throws IOException
-    {
-        //new MainPacMan();
+    private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
+    private static int score = 0;
+    private static int bluetimer = 0;
+    private static int numlives = 3;
+    private static javax.swing.Timer timer;
 
-        //Layered pane base code
-        /*
-        JLabel labelOne = new JLabel();
-        labelOne.setOpaque(true);
-        labelOne.setBackground(Color.RED);
-        labelOne.setBounds(50,50,200,200);
-
-        JLabel labelTwo = new JLabel();
-        labelTwo.setOpaque(true);
-        labelTwo.setBackground(Color.BLUE);
-        labelTwo.setBounds(150,150,200,200);
-
-        JLabel labelThree = new JLabel();
-        labelThree.setOpaque(true);
-        labelThree.setBackground(Color.GREEN);
-        labelThree.setBounds(250,250,200,200);
-
-        JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.setBounds(0,0,500,500);
-        layeredPane.add(labelOne);
-        layeredPane.add(labelTwo);
-        layeredPane.add(labelThree);
-
-        JFrame frame = new JFrame("JLayeredPane");
-        frame.add(layeredPane);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(500,500));
-        frame.setLayout(null);
-        frame.setVisible(true);
-        */
-
-        new UserInput();
-        new MainPacMan();
-        if (/*startbuttonclicked*/){
-            //pacman.turnright
-        }
-        ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
-        ghosts.add(new Ghost(14, 14));
-        ghosts.add(new Ghost(14, 15));
-        ghosts.add(new Ghost(15, 14));
-        ghosts.add(new Ghost(15, 15));
-        int score = 0;
-        int bluetimer = 0;
-        int numlives = 3;
+    public static void turn(){
+        timer = new Timer(500, taskPerformer);
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                for (ghost g: ghosts){
+                for (Ghost g: ghosts){
                     if (/*pacman.getLocation()*/.equals(g.getLocation())){
                         if (bluetimer>0){
                             score+=200;
@@ -106,6 +58,7 @@ public class MainPacMan implements ActionListener{
                         }
                         else {
                             numlives--;
+                            checkLives();
                             //board.reset
                             Thread.sleep(3000);
                             //pacman.turnright
@@ -133,22 +86,47 @@ public class MainPacMan implements ActionListener{
                     score+=10;
                 }
                 bluetimer--;
-                if (!Board.containsfood()){
-                    break;
-                }
+                checkExit();
                 }
             } 
+    }
+    public static void mainAction(){
+        if (/*startbuttonclicked*/){
+            //pacman.turnright
         }
-        Timer timer = new Timer(500, taskPerformer);
+        ghosts.add(new Ghost(14, 14));
+        ghosts.add(new Ghost(14, 15));
+        ghosts.add(new Ghost(15, 14));
+        ghosts.add(new Ghost(15, 15));
+        turn();
         timer.setRepeats(true);
         timer.start();
-        if (livesleft == 0){
-            Thread.sleep(2500);
+
+        }
+    }
+
+    public static void checkLives(){
+        if (numlives == 0){
             timer.stop();
         }
+    }
+    
+    public static void checkExit(){
+        if (!Board.containsFood(){
+            timer.stop();
+        })
+        //end board.display();
+    }
+    public static void main(String args[]) throws IOException
+    {
+        new UserInput();
+        new MainPacMan();
+        mainAction();
+
 
     }
 
+    public 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
