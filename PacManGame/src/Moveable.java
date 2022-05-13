@@ -52,13 +52,13 @@ public class Moveable {
 
 	//getters in case it is needed for a comparison method of sorts
 	//returns the integer x coordinate of the moveable
-	public int getX() {
-		return (int)rect.x;
+	public double getX() {
+		return this.rect.x;
 	}
 
 	//returns the integer y coordinate of the moveable
-	public int getY() {
-		return (int)rect.y;
+	public double getY() {
+		return this.rect.y;
 	}
 
 	//gets horizontal distance change per refresh

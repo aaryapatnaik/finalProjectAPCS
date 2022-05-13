@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 public class Game {
 
 	private final int x = 374, y=180;
-    private Player snake = new Player("Garfield", imgsIdle, imgsActive,1);
-	private ArrayList<Player> objects = new ArrayList<>();
+    private Player player = new Player("Garfield", imgsIdle, imgsActive, 1, 1, 200, 200);
+	private ArrayList<Ghost> objects = new ArrayList<>();
 
     public Game(){
         
@@ -37,7 +37,7 @@ public class Game {
 	 * get it...
 	 */
 	public void moveObjects() {
-		snake.move();
+		player.move();
 	}
 
 
@@ -48,9 +48,9 @@ public class Game {
 	 * @param g
 	 */
     public void drawTheGame(Graphics g) {
-		snake.draw(g);
-		for(GameObject go:this.objects) {
-			go.draw(g);
+		player.drawIdle(g);
+		for(Ghost go:this.objects) {
+			go.drawIdle(g);
 		}
 
 	}
