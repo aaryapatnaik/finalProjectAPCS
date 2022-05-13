@@ -21,4 +21,5 @@ public class Player extends Moveable {
     public void addScore(int sc) {
         score+=sc;
     }
+
 }

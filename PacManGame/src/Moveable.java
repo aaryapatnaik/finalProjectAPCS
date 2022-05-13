@@ -4,25 +4,12 @@ import java.awt.*;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-/**
- * Generic GameObject.  This has all the BASIC attributes and behaviors that 
- * ALL game objects should have.  Many of these can be overridden in subclasses.
- * Those behaviors and attributes include:
- * 
- * Location and size (using a Rectangle for that)
- * Color (used for testing but not used in the final version)
- * speed in the x and speed in the y direction
- * The GameObject has the ability to move, detect collisions with 
- * another GameObject and the ability to draw itself on a Graphics
- * 
- * @author RHanson
- *
- */
+//https://docs.oracle.com/javase/7/docs/api/java/awt/Rectangle.html
+
 public class Moveable {
 	
 	/** rect has info about location and dimension of this game object*/
 	private Rectangle rect;
-
 
 	private String name; // will be used in main for distinction between ghosts
 	private Image[] imagesIdle;// for animating a character idle
@@ -41,10 +28,6 @@ public class Moveable {
 	/*creates a new moveable with a name, image arrays, the horizontal distance change, the vertical distance change,
 	and the intial location of the rectangle object.*/
 
-	public Moveable() {
-		dx = 0;
-		dy = 0;
-	}
 	public Moveable(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
 		name = na;
 		rect = new Rectangle(spawnX, spawnY, 25, 25);
@@ -55,7 +38,7 @@ public class Moveable {
 	}
 
 	//getters in case it is needed for a comparison method of sorts
-	//returns the integer x coordinate of the moveable
+	//returns tPhe integer x coordinate of the moveable
 	public double getX() {
 		return this.rect.x;
 	}
@@ -83,6 +66,11 @@ public class Moveable {
 	//sets vertical distance change per refresh
 	public void setDy(double dy) {
 		this.dy = dy;
+	}
+
+	//sets location 
+	public void setLocation(int x, int y) {
+		this.rect.setLocation(x,y);
 	}
 
 	//moves the rectangle object in both directions
@@ -145,7 +133,8 @@ public class Moveable {
 		return this.rect.intersects(go.rect);
 	}
 
-	//return true or false when the player collides with a wall(probs don't need this)
+	/*return true or false when the player collides with a wall(probs don't need this).
+	Probably is not working right now*/ 
 	public boolean collidedWithWall(Cell wall) {
 		return wall.getWall();
 	}

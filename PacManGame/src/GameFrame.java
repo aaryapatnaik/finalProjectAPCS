@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+/*
 public class GameFrame extends JFrame {
 	private int prints = 0;
 	private Game game = new Game();
@@ -39,8 +40,8 @@ public class GameFrame extends JFrame {
 	 * Sets up the panel, timer, other initial objects in the game.
 	 * The Timer goes off every REFRESH milliseconds.  Every time the
 	 * Timer goes off, the game is told to update itself and then the 
-	 * view is refreshed.  
-	 */
+	 * view is refreshed.  //comment ends here
+	 
 	private void setUpStuff() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -68,8 +69,8 @@ public class GameFrame extends JFrame {
 	 * The second part maps the action command String with an Action.
 	 * I have shown you two ways this can be done.  You can write the code
 	 * you want executed in the actionPerformed method or you can call the
-	 * method from within the actionPerformed method call.
-	 */
+	 * method from within the actionPerformed method call. //comment ends here
+	 
 	private void addKeys(JPanel panel) {
 		// this connects keystroke with a command
 		panel.getInputMap().put(KeyStroke.getKeyStroke("UP"), "up_key");
@@ -128,4 +129,4 @@ public class GameFrame extends JFrame {
 		});
 	}
 
-}
+}*/
