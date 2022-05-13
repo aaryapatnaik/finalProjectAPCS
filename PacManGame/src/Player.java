@@ -1,6 +1,7 @@
 
 import java.awt.*;
 
+<<<<<<< HEAD
 public class Player extends Moveable {
 
     private int score;
@@ -22,5 +23,38 @@ public class Player extends Moveable {
         score+=sc;
     }
 
+=======
+public class Player {
+    private int x;
+    private int y;
+    private int livesLeft;
 
+    //constructor for the player
+
+    public Player() {
+        x = 0;
+        y = 0;
+        livesLeft = 3;
+    }
+
+    public void setX(int value) {
+        x = value;
+    }
+    public void setY(int value) {
+        y = value;
+    }
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+>>>>>>> f3c2817cd5d29f6942dd960d3123109e2a026a87
+
+    public int getLives() {
+        return livesLeft;
+    }
+    public void liftLost() {
+        livesLeft -= 1;
+    }
 }
