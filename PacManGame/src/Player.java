@@ -1,14 +1,36 @@
 
 import java.awt.*;
 
-public class Player extends Moveable {
-
+public class Player {
+    private int x;
+    private int y;
+    private int livesLeft;
 
     //constructor for the player
 
-    public Player(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
-        super(na, imgsIdle, imgsActive, dx, dy, spawnX, spawnY);
-	}
+    public Player() {
+        x = 0;
+        y = 0;
+        livesLeft = 3;
+    }
 
+    public void setX(int value) {
+        x = value;
+    }
+    public void setY(int value) {
+        y = value;
+    }
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
 
+    public int getLives() {
+        return livesLeft;
+    }
+    public void liftLost() {
+        livesLeft -= 1;
+    }
 }

@@ -1,44 +1,35 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.security.auth.x500.X500Principal;
 import javax.swing.*;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 
 public class MyPanel extends JPanel implements ActionListener {
-    final int panelWidth = 500;
-    final int panelHeight = 500;
-    Image garfield; 
+    final int PANEL_WIDTH = 500;
+    final int PANEL_HEIGHT = 500; 
+    Image image;
     Image background;
     Timer timer;
-    int xVelocity = 10;
-    int yVelocity = 10;
+    int xVelocity = 100;
+    int yVelocity = 100;
     int x = 0;
     int y = 0;
 
     MyPanel() {
-        this.setPreferredSize(new Dimension(panelWidth, panelHeight));
-        this.setBackground(Color.WHITE);
-        garfield = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/untitled folder/finalProjectAPCS/Media/Garfield/lasagna.png").getImage();
-        timer = new Timer(1000, null);
+        this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+        image = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/untitled folder/finalProjectAPCS/PacManGame/src/lasagna.png").getImage();
+        timer = new Timer(1000, this);
+        timer.start();
     }
 
     public void paint(Graphics g) {
+        super.paint(g);
         Graphics2D g2D = (Graphics2D) g;
-        g2D.drawImage(garfield, x, y, null);
+        g2D.drawImage(image, x, y, null);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        String key = "";
-        key += e.getKeyChar();
-        if (key.equals("d")) {
-            x += xVelocity;
-            repaint();
-        }
+        // TODO Auto-generated method stub
+        x = x + xVelocity;
+        repaint();
     }
 }

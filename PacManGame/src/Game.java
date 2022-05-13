@@ -47,13 +47,13 @@ public class Game {
 	 * or something.
 	 * @param g
 	 */
-    public void drawTheGame(Graphics g) {
-		snake.draw(g);
-		for(GameObject go:this.objects) {
-			go.draw(g);
-		}
+    // public void drawTheGame(Graphics g) {
+	// 	snake.draw(g);
+	// 	for(GameObject go:this.objects) {
+	// 		go.draw(g);
+	// 	}
 
-	}
+	// }
 		
 	
 	/** called when the left arrow is pressed.  Probably move something
@@ -70,7 +70,8 @@ public class Game {
 	 *  to the right, or turn right or... */
 	public void rtHit(ActionEvent e) {
         
-		System.out.println("Right!");
+		Pacman p = new Pacman();
+		p.setXchange(10);
 	}
 	/** called when the right arrow is released.  You don't have to do anything
 	 * here, but you can if your game uses this event*/
