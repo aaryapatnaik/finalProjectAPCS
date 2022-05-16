@@ -9,13 +9,6 @@ public class Ghost extends Moveable {
         canBeEaten = false;
 	}
 
-<<<<<<< HEAD
-    public Location getLocation(){
-        return l;
-    } 
-
-    
-=======
     //returns the vulnerability status of the ghost
     public boolean getBeEaten() {
         return canBeEaten;
@@ -25,5 +18,4 @@ public class Ghost extends Moveable {
     public void setBeEaten(boolean t) {
         canBeEaten = t;
     }
->>>>>>> b049d8c362eb7384f48e651c5fad34f9d6752b42
 }
