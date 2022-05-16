@@ -53,13 +53,15 @@ import java.awt.*;
      private static int bluetimer = 0;
      private static int numlives = 3;
      private static javax.swing.Timer timer;
-     /*
+     private static Board board = new Board();
+     private static Player p = new Player(/*parameters*/);
+     
      public static void turn(){
-         timer = new Timer(500, taskPerformer);
+         timer = new javax.swing.Timer(500, taskPerformer);
          ActionListener taskPerformer = new ActionListener() {
              public void actionPerformed(ActionEvent evt){
                  for (Ghost g: ghosts){
-                     if (pacman.getLocation().equals(g.getLocation())){
+                     if (p.getLocation().equals(g.getLocation())){
                          if (bluetimer>0){
                              score+=200;
                          }
@@ -68,17 +70,29 @@ import java.awt.*;
                             checkLives();
                              //board.reset
                              Thread.sleep(3000);
-                             //pacman.turnright
+                             //p.turnright
                      score+=10;
                  }
+                 if (cell.containsBigFood()){
+                    eatFood();
+                    score+=25;
+                    for (Ghost g: ghosts){
+                        //g.turnBlue
+                    }
+                    bluetimer = 20;
+                }
+                if (cell.containsFood()){
+                    eatFood();
+                    score+=10;
+                }
                  bluetimer--;
                  checkExit();
                  }
              } 
      }
      public static void mainAction(){
-         if (startbuttonclicked){
-             //pacman.turnright
+         if (/*startbuttonclicked*/){
+             //p.turnright
          }
          ghosts.add(new Ghost(14, 14));
          ghosts.add(new Ghost(14, 15));
@@ -97,12 +111,18 @@ import java.awt.*;
      }
 
      public static void checkExit(){
-         if (!Board.containsFood(){
+         if (!Board.containsFood()){
              timer.stop();
-         })
+         }
          //end board.display();
      }
-     */
+
+     public static void eatFood(){
+         //int x = (int) p.getX();
+         //int y = (int) p.getY();
+         //board[x][y].setFood(false);
+     }
+
      public static void main(String args[]) throws IOException
      {
          //new UserInput();
