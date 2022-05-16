@@ -15,7 +15,11 @@ public class MyPanel extends JPanel implements ActionListener {
 
     MyPanel() {
         this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+<<<<<<< HEAD
         image = new ImageIcon("\Users\abhir\New folder\finalProjectAPCS\finalProjectAPCS\Media\Garfield\lasagna.png").getImage();
+=======
+        image = new ImageIcon("/Users/justinim/Desktop/AP Comp Sci/finalProjectAPCS/PacManGame/src/lasagna.png").getImage();
+>>>>>>> 319722964a75b516f5cac28f72f8e0bdac969514
         timer = new Timer(1000, this);
         timer.start();
     }

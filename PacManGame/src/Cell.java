@@ -2,7 +2,7 @@ public class Cell {
     private boolean wall;
     private boolean containsFood;
     private boolean containsBigFood;
-    private static double x, y;
+    //private static double x, y;
     
 
     public Cell (boolean w, boolean cf){
@@ -19,7 +19,7 @@ public class Cell {
     }
 
     public boolean getWall() {
-        return wall;
+        return wall; //jutin was here
     }
 
     public boolean getContainsFood() {
@@ -29,7 +29,4 @@ public class Cell {
     public boolean getContainsBigFood() {
         return containsBigFood;
     }
-
-
-
 }
