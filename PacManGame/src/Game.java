@@ -2,11 +2,14 @@ import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/*uncommenting might be a bit complex
+
+/*
 public class Game {
 
 	private final int x = 374, y=180;
-    private Player snake = new Player("Garfield", imgsIdle, imgsActive,1);
-	private ArrayList<Player> objects = new ArrayList<>();
+    private Player player = new Player("Garfield", imgsIdle, imgsActive, 1, 1, 200, 200);
+	private ArrayList<Ghost> objects = new ArrayList<>();
 
     public Game(){
         
@@ -18,8 +21,8 @@ public class Game {
 	 * This is called every time the Timer goes off.  Right now, it moves all 
 	 * the Objects and checks for collisions.  This is common in games with flying
 	 * Objects.  You can do more, though.  Like add items or move to new screens
-	 * or check to see if the turn is over or...
-	 */
+	 * or check to see if the turn is over or... //comment ends here
+	 
 	public void updateGame() {
 		System.out.println("Moving Objects!!");
 		moveObjects();
@@ -28,16 +31,17 @@ public class Game {
 	}
     /**
 	 * Right now I am checking for collisions between GameObjects
-	 */
+	 * // comment ends here
+	 
 	public void checkCollisions() {
 		
 	}
 
 	/**
 	 * get it...
-	 */
+	 // comment ends here
 	public void moveObjects() {
-		snake.move();
+		player.move();
 	}
 
 
@@ -47,43 +51,44 @@ public class Game {
 	 * or something.
 	 * @param g
 	 */
-    public void drawTheGame(Graphics g) {
-		snake.draw(g);
-		for(GameObject go:this.objects) {
-			go.draw(g);
-		}
+    //public void drawTheGame(Graphics g) {
+		//player.drawIdle(g);
+		//for(Ghost go:this.objects) {
+			//go.drawIdle(g);
+		//}
 
-	}
+	// }
 		
 	
 	/** called when the left arrow is pressed.  Probably move something
-	 *  to the left, or turn left or... */
+	 *  to the left, or turn left or... //comment ends here
 	public void ltHit(ActionEvent e) {
 		System.out.println("Left!!");
 	}
 	/** called when the left arrow is released.  You don't have to do anything
-	 * here, but you can if your game uses this event*/
+	 * here, but you can if your game uses this event//comment ends here
     public void leftReleased(ActionEvent e) {
         System.out.println("Released Left!!");
     }
 	/** called when the right arrow is pressed.  Probably move something
-	 *  to the right, or turn right or... */
+	 *  to the right, or turn right or... //comment ends here
 	public void rtHit(ActionEvent e) {
         
-		System.out.println("Right!");
+		Pacman p = new Pacman();
+		p.setXchange(10);
 	}
 	/** called when the right arrow is released.  You don't have to do anything
-	 * here, but you can if your game uses this event*/
+	 * here, but you can if your game uses this event//comment ends here
     public void rightReleased(ActionEvent e) {
 		System.out.println("Released &&&&  Right!!");
     }
 	/** called when the up arrow is pressed.  You don't have to do anything
-	 * here, but you can if your game uses this event*/
+	 * here, but you can if your game uses this event//comment ends here
     public  void upHit(ActionEvent e) {
 		System.out.println("Up!!");
 	}
 	/** called when the up arrow is released.  You don't have to do anything
-	 * here, but you can if your game uses this event*/
+	 * here, but you can if your game uses this event//comment ends here
 	public void upReleased(ActionEvent e) {
 		System.out.println("Released ^^^^  Up!!");
     }
@@ -96,5 +101,4 @@ public class Game {
 		System.out.println("Released Down!!");
 	}
 
-}
-*/
+}*/
