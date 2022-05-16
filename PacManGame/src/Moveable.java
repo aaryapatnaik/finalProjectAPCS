@@ -38,7 +38,7 @@ public class Moveable {
 	}
 
 	//getters in case it is needed for a comparison method of sorts
-	//returns tPhe integer x coordinate of the moveable
+	//returns the integer x coordinate of the moveable
 	public double getX() {
 		return this.rect.x;
 	}

@@ -18,4 +18,9 @@ public class Ghost extends Moveable {
     public void setBeEaten(boolean t) {
         canBeEaten = t;
     }
+<<<<<<< HEAD
+=======
+
+    //draw method for vulnerable ghost
+>>>>>>> 75bf6a1ea3e11495537f70df330ce4ea57a4cdd6
 }
