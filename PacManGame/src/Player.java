@@ -6,10 +6,16 @@ public class Player extends Moveable {
     private int score;
     //constructor for the player
 
+    /* consider making the constructor empty (without parameters). Pay attention to Aarya's work to see 
+    if that might work*/
     public Player(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
         super(na, imgsIdle, imgsActive, dx, dy, spawnX, spawnY);
         score = 0;
 	}
+
+    /*public Player() {
+        new Moveable? with predetermined names and image arrays
+    }*/
 
     public int getScore() {
         return score;
