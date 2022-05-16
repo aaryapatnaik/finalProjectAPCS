@@ -8,5 +8,7 @@ public class Ghost extends Moveable {
 
     public Location getLocation(){
         return l;
-    }
+    } 
+
+    
 }
