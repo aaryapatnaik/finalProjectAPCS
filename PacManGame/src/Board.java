@@ -305,4 +305,9 @@ public class Board {
         }
         return false;
     }
+
+    /* returns a cell given an x and y location */
+    public Cell getCell(int x, int y) {
+        return gameBoard[y][x];
+    }
 }

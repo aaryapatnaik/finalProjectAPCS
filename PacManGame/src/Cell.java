@@ -2,12 +2,14 @@ public class Cell {
     private boolean wall;
     private boolean containsFood;
     private boolean containsBigFood;
-    //private static double x, y;
+    /* private static int height = 30;
+    private static int width = 30; */
     
 
     public Cell (boolean w, boolean cf){
         wall = w;
         containsFood = cf;
+
     }
 
     public void setFood (boolean cf) {
@@ -29,4 +31,5 @@ public class Cell {
     public boolean getContainsBigFood() {
         return containsBigFood;
     }
+
 }
