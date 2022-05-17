@@ -294,6 +294,20 @@ public class Board {
         gameBoard[3][26] = new Cell (false, false, true);
         gameBoard[20][1] = new Cell (false, false, true);
         gameBoard[20][26] = new Cell (false, false, true);
+
+        // spawning point walls 
+        for (int i = 10; i <=17; i++) {
+            gameBoard[12][i] = new Cell (true,false);
+            gameBoard[16][i] = new Cell (true,false);
+        }
+        for (int i = 12; i <=16; i++) {
+            gameBoard[i][10] = new Cell (true,false);
+            gameBoard[i][17] = new Cell (true,false);
+        }
+        
+        // opening in spawning point for exit
+        gameBoard[10][13] = new Cell (false,false);
+        gameBoard[10][14] = new Cell (false,false);
         
     }
 
@@ -311,6 +325,6 @@ public class Board {
 
     /* returns a cell given an x and y location */
     public Cell getCell(int x, int y) {
-        return gameBoard[y][x];
+        return gameBoard[x][y];
     }
 }
