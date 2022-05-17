@@ -138,4 +138,29 @@ public class Moveable {
 	public boolean collidedWithWall(Cell wall) {
 		return wall.getWall();
 	}
+
+	/*checks if there is a cell wall either above, below, to the left, to the right. Returns true if there is.
+	returns false if all cells surrouding the moveable are empty*/
+	// this method should probably be in the main pac man class. 
+	public boolean checkSurroundings(Moveable m) {
+		int x = (int)(m.getX()); //divide by cell width
+		int y = (int)(m.getY()); //divide by cell width
+
+		//check for null, then check if the cell is a solid wall
+		//gameboard is a temporary name, it should be whatever the board name in main is
+		if (gameBoard[x+1][y] != null && gameBoard[x+1][y].getWall() == true) {
+			return true;
+		}
+		if (gameBoard[x-1][y] != null && gameBoard[x-1][y].getWall() == true) {
+			return true;
+		}
+		if (gameBoard[x][y+1] != null && gameBoard[x][y+1].getWall() == true) {
+			return true;
+		}
+		if (gameBoard[x][y-1] != null && gameBoard[x][y-1].getWall() == true) {
+			return true;
+		}
+
+		return false;
+	}
 }
