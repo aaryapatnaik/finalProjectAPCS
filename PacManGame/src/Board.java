@@ -289,9 +289,12 @@ public class Board {
             }
         }
 
-
-
-
+        // adding big food cells 
+        gameBoard[3][1] = new Cell (false, false, true);
+        gameBoard[3][26] = new Cell (false, false, true);
+        gameBoard[20][1] = new Cell (false, false, true);
+        gameBoard[20][26] = new Cell (false, false, true);
+        
     }
 
     /* returns true if there is at least one cell that contains food, returns false otherwise */

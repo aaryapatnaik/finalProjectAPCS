@@ -11,6 +11,11 @@ public class Cell {
         containsFood = cf;
 
     }
+    public Cell (boolean w, boolean cf, boolean bg){
+        wall = w;
+        containsFood = cf;
+        containsBigFood = bg;
+    }
 
     public void setFood (boolean cf) {
         containsFood = cf;
