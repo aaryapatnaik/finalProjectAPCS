@@ -111,7 +111,7 @@ import java.awt.*;
      }
 
      public static void checkExit(){
-         if (!Board.containsFood()){
+         if (!board.containsFood()){
              timer.stop();
          }
          //end board.display();
@@ -121,7 +121,17 @@ import java.awt.*;
          //int x = (int) p.getX();
          //int y = (int) p.getY();
          //board[x][y].setFood(false);
+     } 
+
+     public static int getIntX(){
+         return (int) (p.getY()/30);
      }
+
+     public static int getIntY(){
+         return (int) (p.getX()/30);
+     }
+
+     
 
      public static void main(String args[]) throws IOException
      {
