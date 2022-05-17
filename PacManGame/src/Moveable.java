@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.awt.*;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -139,28 +140,32 @@ public class Moveable {
 		return wall.getWall();
 	}
 
-	/*checks if there is a cell wall either above, below, to the left, to the right. Returns true if there is.
-	returns false if all cells surrouding the moveable are empty*/
+	/*checks if there is a cell wall either above, below, to the left, to the right. Returns an arraylist with numbers
+	that represent possible directions for both the player and the ghost. This can be used to randomly sort through direction
+	choices for ghost and present possible directions for player when it hits a wall.
+	0 is north, 1 is east, 2 is south, and 3 is west*/
 	// this method should probably be in the main pac man class. 
-	public boolean checkSurroundings(Moveable m) {
+	public ArrayList checkSurroundings(Moveable m, Cell[][] b) {
 		int x = (int)(m.getX()); //divide by cell width
 		int y = (int)(m.getY()); //divide by cell width
 
+		ArrayList<Integer> dir = new ArrayList();
+
 		//check for null, then check if the cell is a solid wall
 		//gameboard is a temporary name, it should be whatever the board name in main is
-		if (gameBoard[x+1][y] != null && gameBoard[x+1][y].getWall() == true) {
-			return true;
+		if (b[y+1][x] != null && b[y+1][x].getWall() == true) {
+			dir.add(0);
 		}
-		if (gameBoard[x-1][y] != null && gameBoard[x-1][y].getWall() == true) {
-			return true;
+		if (b[y-1][x] != null && b[y-1][x].getWall() == true) {
+			dir.add(1);
 		}
-		if (gameBoard[x][y+1] != null && gameBoard[x][y+1].getWall() == true) {
-			return true;
+		if (b[y][x+1] != null && b[y][x+1].getWall() == true) {
+			dir.add(2);
 		}
-		if (gameBoard[x][y-1] != null && gameBoard[x][y-1].getWall() == true) {
-			return true;
+		if (b[y][x-1] != null && b[y][x-1].getWall() == true) {
+			dir.add(3);
 		}
 
-		return false;
+		return dir;
 	}
 }
