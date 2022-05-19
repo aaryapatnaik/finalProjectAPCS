@@ -4,8 +4,8 @@ public class Ghost extends Moveable {
     private static boolean canBeEaten;
 
     //constructor for the normal ghost
-    public Ghost(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
-        super(na, imgsIdle, imgsActive, dx, dy, spawnX, spawnY);
+    public Ghost(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
+        super(na, imgs, dx, dy, spawnX, spawnY);
         canBeEaten = false;
 	}
 
