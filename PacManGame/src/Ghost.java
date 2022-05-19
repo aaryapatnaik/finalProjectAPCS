@@ -18,5 +18,9 @@ public class Ghost extends Moveable {
     public void setBeEaten(boolean t) {
         canBeEaten = t;
     }
+
+    public void turnBlue() {
+
+    }
     
 }

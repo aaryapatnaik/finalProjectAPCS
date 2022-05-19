@@ -47,6 +47,16 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
+
+        //Setting animation based on user input
+        JFrame temp = new JFrame();
+        animationBasedOnInput playerAnimation = new animationBasedOnInput();
+        frame.add(playerAnimation);
+        temp.add(playerAnimation);
+        temp.setVisible(true);
+        temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        temp.setSize(800,800);
+
     }*/
      private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
