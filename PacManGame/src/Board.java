@@ -7,6 +7,7 @@ public class Board {
         for (int i = 0; i < gameBoard.length; i++) {
             for (int k = 0; k < gameBoard[i].length; k++) {
                 gameBoard[i][k] = new Cell(false, true);
+                System.out.println("--");
             }
         }
         for (int i = 0; i < gameBoard[0].length; i++) {
