@@ -54,8 +54,8 @@ import java.awt.*;
      private static int numlives = 3;
      private static javax.swing.Timer timer;
      private static Board board = new Board();
-     private static Player p = new Player("", new Image[2], new Image[3], 1, 1, 1, 1);
-     
+     private static Player p = new Player("", new Image[2], /*new Image[3]*/ 1, 1, 1, 1);
+
      public static void turn(){
          ActionListener taskPerformer = new ActionListener() {
              public void actionPerformed(ActionEvent evt){
@@ -97,13 +97,13 @@ import java.awt.*;
     }
 
      public static void mainAction(){
-         if (/*startbuttonclicked*/){
-             //p.turnright
-         }
-         ghosts.add(new Ghost(14, 14));
-         ghosts.add(new Ghost(14, 15));
-         ghosts.add(new Ghost(15, 14));
-         ghosts.add(new Ghost(15, 15));
+        //  if (/*startbuttonclicked*/){
+        //      //p.turnright
+        //  }
+        //  ghosts.add(new Ghost(14, 14));
+        //  ghosts.add(new Ghost(14, 15));
+        //  ghosts.add(new Ghost(15, 14));
+        //  ghosts.add(new Ghost(15, 15));
          turn();
          timer.setRepeats(true);
          timer.start();

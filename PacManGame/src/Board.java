@@ -262,29 +262,29 @@ public class Board {
         }
         // sixteenth row of walls
         for (int i = 7; i <= 8; i++) {
-            for (int j = 24; j <= 28; j++) {
+            for (int j = 24; j <= 27; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
         for (int i = 19; i <= 20; i++) {
-            for (int j = 24; j <= 28; j++) {
+            for (int j = 24; j <= 27; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
         // seventeenth row of walls
         for (int i = 13; i <= 14; i++) {
-            for (int j = 26; j <= 28; j++) {
+            for (int j = 26; j <= 27; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
         // eighteenth row of walls
         for (int i = 2; i <= 11; i++) {
-            for (int j = 27; j <= 28; j++) {
+            for (int j = 27; j <= 27; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
         for (int i = 16; i <= 25; i++) {
-            for (int j = 27; j <= 28; j++) {
+            for (int j = 27; j <= 27; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
