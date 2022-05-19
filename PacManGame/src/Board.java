@@ -308,6 +308,39 @@ public class Board {
         // opening in spawning point for exit
         gameBoard[10][13] = new Cell (false,false);
         gameBoard[10][14] = new Cell (false,false);
+
+        // remove food from sides
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 10; j <= 12; j++) {
+                gameBoard[j][i] = new Cell(false,false);
+            }
+        }
+        for (int i = 23; i <= 26; i++) {
+            for (int j = 10; j <= 12; j++) {
+                gameBoard[j][i] = new Cell(false,false);
+            }
+        }
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 16; j <= 18; j++) {
+                gameBoard[j][i] = new Cell(false,false);
+            }
+        }
+        for (int i = 23; i <= 26; i++) {
+            for (int j = 16; j <= 18; j++) {
+                gameBoard[j][i] = new Cell(false,false);
+            }
+        }
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 14; j <= 14; j++) {
+                gameBoard[j][i] = new Cell(false,false);
+            }
+        }
+        for (int i = 22; i <= 26; i++) {
+            for (int j = 14; j <= 14; j++) {
+                gameBoard[j][i] = new Cell(false,false);
+            }
+        }
+
         
     }
 
