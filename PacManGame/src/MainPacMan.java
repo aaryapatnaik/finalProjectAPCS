@@ -17,7 +17,7 @@ import java.awt.*;
      private JPanel panel;
      private JButton startButton;
 
-     public MainPacMan() throws IOException {
+    /* public MainPacMan() throws IOException {
         //Setting JFrame
         JFrame frame= new JFrame("PacMan by AP, AV, JI, HN");   
         frame.setSize(1000,1000);            
@@ -47,21 +47,20 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
-    }
+    }*/
      private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
      private static int bluetimer = 0;
      private static int numlives = 3;
      private static javax.swing.Timer timer;
      private static Board board = new Board();
-     private static Player p = new Player(/*parameters*/);
+     private static Player p = new Player("", new Image[2], new Image[3], 1, 1, 1, 1);
      
      public static void turn(){
-         timer = new javax.swing.Timer(500, taskPerformer);
          ActionListener taskPerformer = new ActionListener() {
              public void actionPerformed(ActionEvent evt){
                  for (Ghost g: ghosts){
-                     if (p.getLocation().equals(g.getLocation())){
+                     if (p.collidedWithMoveable(g)){
                          if (bluetimer>0){
                              score+=200;
                          }
@@ -71,25 +70,32 @@ import java.awt.*;
                              //board.reset
                              Thread.sleep(3000);
                              //p.turnright
-                     score+=10;
-                 }
-                 if (cell.containsBigFood()){
+                            score+=10;
+                            }
+                    }
+                 if (board.getCell(getIntX(), getIntY()).getContainsBigFood()){
                     eatFood();
                     score+=25;
-                    for (Ghost g: ghosts){
-                        //g.turnBlue
+                    for (Ghost h: ghosts){
+                        //h.turnBlue
                     }
                     bluetimer = 20;
                 }
-                if (cell.containsFood()){
+                if (board.getCell(getIntX(), getIntY()).getContainsFood()){
                     eatFood();
                     score+=10;
                 }
                  bluetimer--;
+                 if (bluetimer == 0){
+                     //ghost.turnNormal
+                 }
                  checkExit();
                  }
              } 
-     }
+     };
+     timer = new javax.swing.Timer(500, taskPerformer);
+    }
+
      public static void mainAction(){
          if (/*startbuttonclicked*/){
              //p.turnright
@@ -118,17 +124,15 @@ import java.awt.*;
      }
 
      public static void eatFood(){
-         //int x = (int) p.getX();
-         //int y = (int) p.getY();
-         //board[x][y].setFood(false);
+         board.getCell(getIntX(), getIntY()).setFood(false);
      } 
 
      public static int getIntX(){
-         return (int) (p.getY()/30);
+         return (int) (p.getY()/30.0);
      }
 
      public static int getIntY(){
-         return (int) (p.getX()/30);
+         return (int) (p.getX()/30.0);
      }
 
      
@@ -139,17 +143,10 @@ import java.awt.*;
          //new MainPacMan();
          //mainAction();
          new Animation();
-
-
      }
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         
-    } 
-     /*
-     @Override
-     public void actionPerformed(ActionEvent e) {
-         // TODO Auto-generated method stub
-    */
-     }
+    }
+}
