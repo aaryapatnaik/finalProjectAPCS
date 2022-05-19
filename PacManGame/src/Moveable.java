@@ -13,8 +13,9 @@ public class Moveable {
 	private Rectangle rect;
 
 	private String name; // will be used in main for distinction between ghosts
-	private Image[] imagesIdle;// for animating a character idle
-	private Image[] imagesActive; //for animating an active character
+	private Image[] images;// for animating a character idle
+
+	private int direction; //needed for turning methods in both ghost and player. 
 
 	//for testing
 	private Color color = new Color(255, 255, 0);
@@ -29,13 +30,13 @@ public class Moveable {
 	/*creates a new moveable with a name, image arrays, the horizontal distance change, the vertical distance change,
 	and the intial location of the rectangle object.*/
 
-	public Moveable(String na, Image[] imgsIdle, Image[] imgsActive, int dx, int dy, int spawnX, int spawnY) {
+	public Moveable(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
 		name = na;
 		rect = new Rectangle(spawnX, spawnY, 25, 25);
-		imagesIdle = imgsIdle;
-		imagesActive = imgsActive;
+		images = imgs;
 		this.dx = dx;
 		this.dy = dy;
+		this.direction = 1; //the objects will start facing east
 	}
 
 	//getters in case it is needed for a comparison method of sorts
@@ -97,13 +98,8 @@ public class Moveable {
 
 	//returns the array of images for the moveable when it is idle/still
 	public Image[] getIdleImageArray() {
-        return this.imagesIdle;
+        return this.images;
     }
-
-	//returns the array of images for the moveable when it is active/moving
-	public Image[] getActiveImagesArray() {
-		return this.imagesActive;
-	}
   
 	//for testing
 	public void testDraw(Graphics g) {
@@ -116,15 +112,15 @@ public class Moveable {
 	/*rather nonfunctional as of right now. Intention was the display the images in the array when the player moves.
 	did not consider different image arrays for different directions.*/
 	public void drawIdle(Graphics g) {
-		for (int i = 0; i < imagesIdle.length; i++) {
-			Image img = imagesIdle[i];
+		for (int i = 0; i < 2; i++) {
+			Image img = images[i];
 			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
 		}
 	}
 
 	public void drawActive(Graphics g) {
-		for (int i = 0; i < imagesActive.length; i++) {
-			Image img = imagesActive[i];
+		for (int i = 2; i < 4; i++) {
+			Image img = images[i];
 			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
 		}
 	}
@@ -145,7 +141,7 @@ public class Moveable {
 	choices for ghost and present possible directions for player when it hits a wall.
 	0 is north, 1 is east, 2 is south, and 3 is west*/
 	// this method should probably be in the main pac man class. 
-	public ArrayList checkSurroundings(Moveable m, Cell[][] b) {
+	public ArrayList<Integer> checkSurroundings(Moveable m, Cell[][] b) {
 		int x = (int)(m.getX()); //divide by cell width
 		int y = (int)(m.getY()); //divide by cell width
 
@@ -168,4 +164,31 @@ public class Moveable {
 
 		return dir;
 	}
+
+	//Set of direction changers. 
+	public String turnRight() {
+        this.direction = 1;
+		return "Turned right!";
+    }
+    public String turnLeft() {
+		this.direction = 3;
+		return "Turned left!";
+    }
+    public String turnDown() {
+		this.direction = 2;
+		return "Turned down!";
+    }
+    public String turnUp() {
+		this.direction = 0;
+		return "Turned up!";
+    }
+
+	public String setDirection(int i) {
+		if (i < 0 && i > 4 ) {
+			return "Invalid parameter";
+		}
+		this.direction = i;
+		return "Changed direction to" + i;
+	}
+
 }
