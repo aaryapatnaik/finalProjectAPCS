@@ -20,10 +20,11 @@ public class Ghost extends Moveable {
     }
 
     public void turnBlue() {
-        if (this.canBeEaten == false) {
-            this.canBeEaten = true;
-            
-        }
 
     }
+
+    public void turnNormal() {
+        
+    }
+    
 }

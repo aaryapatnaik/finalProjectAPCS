@@ -13,7 +13,10 @@ public class Moveable {
 	private Rectangle rect;
 
 	private String name; // will be used in main for distinction between ghosts
-	private Image[] images;// for animating a character idle
+	
+	private Image[] images;// for animating a character. The player should have 16 images, the ghost should have 32 images.
+	//images 0-7 should be moving images for the player. 8-16 should be idle images, 2 in each direction. The ghost will
+	//have a set of 8 images for moving normally, idle normal, and moving blue and idle blue. 
 
 	private int direction; //needed for turning methods in both ghost and player. 
 
@@ -96,8 +99,7 @@ public class Moveable {
 		return rect;
 	}
 
-	//returns the array of images for the moveable when it is idle/still
-	public Image[] getIdleImageArray() {
+	public Image[] getImageArray() {
         return this.images;
     }
   
@@ -106,23 +108,6 @@ public class Moveable {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
 		g2.fill(rect);
-	}
-	
-	/** Pretty basic right now, but can make this way better!*/
-	/*rather nonfunctional as of right now. Intention was the display the images in the array when the player moves.
-	did not consider different image arrays for different directions.*/
-	public void drawIdle(Graphics g) {
-		for (int i = 0; i < 2; i++) {
-			Image img = images[i];
-			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
-		}
-	}
-
-	public void drawActive(Graphics g) {
-		for (int i = 2; i < 4; i++) {
-			Image img = images[i];
-			g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
-		}
 	}
 	
 	//should return true or false when the player collides with a ghost
@@ -189,6 +174,121 @@ public class Moveable {
 		}
 		this.direction = i;
 		return "Changed direction to" + i;
+	}
+
+
+	/** Pretty basic right now, but can make this way better!*/
+	/*rather nonfunctional as of right now. Intention was the display the images in the array when the player moves.
+	did not consider different image arrays for different directions.*/
+	//int x represents the direction the object is currently in 
+	//these are tentative draw methods, depending on how Aarya's draw method works
+	public void drawIdle(Graphics g, int x) {
+		if (x == 0) {
+			for (int j = 0; j < 2; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 1) {
+			for (int j = 2; j < 4; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 2) {
+			for (int j = 4; j < 6; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 3) {
+			for (int j = 6; j < 8; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+	}
+
+	public void drawActive(Graphics g, int x) {
+		if (x == 0) {
+			for (int j = 8; j < 10; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 1) {
+			for (int j = 10; j < 12; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 2) {
+			for (int j = 12; j < 14; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 3) {
+			for (int j = 14; j < 16; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+	}
+
+	//only ghosts will use this
+	public void drawActiveBlue(Graphics g, int x) {
+		if (x == 0) {
+			for (int j = 18; j < 20; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 1) {
+			for (int j = 22; j < 24; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 2) {
+			for (int j = 24; j < 26; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 3) {
+			for (int j = 26; j < 28; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+	}
+	//only for blue ghosts
+	public void drawIdleBlue(Graphics g, int x) {
+		if (x == 0) {
+			for (int j = 28; j < 30; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 1) {
+			for (int j = 30; j < 32; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 2) {
+			for (int j = 32; j < 34; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
+		else if (x == 3) {
+			for (int j = 34; j < 36; j++) {
+				Image img = images[j];
+				g.drawImage(img, (int)rect.getX(), (int)rect.getY(), null);
+			}
+		}
 	}
 
 }

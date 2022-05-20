@@ -102,6 +102,7 @@ import java.awt.*;
     }
 
      public static void mainAction(){
+<<<<<<< HEAD
         //  if (/*startbuttonclicked*/){
         //      //p.turnright
         //  }
@@ -109,6 +110,17 @@ import java.awt.*;
         //  ghosts.add(new Ghost(14, 13));
         //  ghosts.add(new Ghost(13, 14));
         //  ghosts.add(new Ghost(13, 13));
+=======
+         if (/*startbuttonclicked*/){
+             //p.turnright
+         }
+         final int dxdy = 30;
+
+         ghosts.add(new Ghost("one", new Image[0], dxdy, dxdy, 14, 14));
+         ghosts.add(new Ghost("two", new Image[0], dxdy, dxdy, 14, 15));
+         ghosts.add(new Ghost("three", new Image[0], dxdy, dxdy, 15, 14));
+         ghosts.add(new Ghost("four", new Image[0], dxdy, dxdy, 15, 15));
+>>>>>>> 50cf360607718fc9ae9dbddf72b8416959fda5a0
          turn();
          timer.setRepeats(true);
          timer.start();
@@ -145,9 +157,9 @@ import java.awt.*;
      public static void main(String args[]) throws IOException
      {
          //new UserInput();
-         //new MainPacMan();
+         new MainPacMan();
          //mainAction();
-         new Animation();
+         //new Animation();
      }
     @Override
     public void actionPerformed(ActionEvent e) {

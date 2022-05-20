@@ -1,3 +1,5 @@
+import java.awt.Rectangle;
+
 public class Board {
     private final int height = 28;
     private final int width = 28;
