@@ -99,8 +99,7 @@ public class Moveable {
 		return rect;
 	}
 
-	//returns the array of images for the moveable when it is idle/still
-	public Image[] getIdleImageArray() {
+	public Image[] getImageArray() {
         return this.images;
     }
   
@@ -178,10 +177,11 @@ public class Moveable {
 	}
 
 
-		/** Pretty basic right now, but can make this way better!*/
+	/** Pretty basic right now, but can make this way better!*/
 	/*rather nonfunctional as of right now. Intention was the display the images in the array when the player moves.
 	did not consider different image arrays for different directions.*/
 	//int x represents the direction the object is currently in 
+	//these are tentative draw methods, depending on how Aarya's draw method works
 	public void drawIdle(Graphics g, int x) {
 		if (x == 0) {
 			for (int j = 0; j < 2; j++) {
