@@ -68,16 +68,21 @@ import java.awt.*;
                             numlives--;
                             checkLives();
                              //board.reset
-                             Thread.sleep(3000);
-                             //p.turnright
+                             try {
+                                Thread.sleep(3000);
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                             p.turnRight();
                             score+=10;
                             }
                     }
-                 if (board.getCell(getIntX(), getIntY()).getContainsBigFood()){
+                 if (board.getCell(getIntX(), getIntY()).getContainsBigitgFood()){
                     eatFood();
                     score+=25;
                     for (Ghost h: ghosts){
-                        //h.turnBlue
+                        h.turnBlue();
                     }
                     bluetimer = 20;
                 }
@@ -87,7 +92,7 @@ import java.awt.*;
                 }
                  bluetimer--;
                  if (bluetimer == 0){
-                     //ghost.turnNormal
+                     ghost.turnNormal();
                  }
                  checkExit();
                  }
@@ -101,9 +106,9 @@ import java.awt.*;
         //      //p.turnright
         //  }
         //  ghosts.add(new Ghost(14, 14));
-        //  ghosts.add(new Ghost(14, 15));
-        //  ghosts.add(new Ghost(15, 14));
-        //  ghosts.add(new Ghost(15, 15));
+        //  ghosts.add(new Ghost(14, 13));
+        //  ghosts.add(new Ghost(13, 14));
+        //  ghosts.add(new Ghost(13, 13));
          turn();
          timer.setRepeats(true);
          timer.start();
