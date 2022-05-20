@@ -142,9 +142,9 @@ import java.awt.*;
      public static void main(String args[]) throws IOException
      {
          //new UserInput();
-         //new MainPacMan();
+         new MainPacMan();
          //mainAction();
-         new Animation();
+         //new Animation();
      }
     @Override
     public void actionPerformed(ActionEvent e) {
