@@ -47,16 +47,6 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
-
-        //Setting animation based on user input
-        JFrame temp = new JFrame();
-        animationBasedOnInput playerAnimation = new animationBasedOnInput();
-        frame.add(playerAnimation);
-        temp.add(playerAnimation);
-        temp.setVisible(true);
-        temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        temp.setSize(800,800);
-
     }*/
      private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
@@ -107,13 +97,15 @@ import java.awt.*;
     }
 
      public static void mainAction(){
-        //  if (/*startbuttonclicked*/){
-        //      //p.turnright
-        //  }
-        //  ghosts.add(new Ghost(14, 14));
-        //  ghosts.add(new Ghost(14, 15));
-        //  ghosts.add(new Ghost(15, 14));
-        //  ghosts.add(new Ghost(15, 15));
+         if (/*startbuttonclicked*/){
+             //p.turnright
+         }
+         final int dxdy = 30;
+
+         ghosts.add(new Ghost("one", new Image[0], dxdy, dxdy, 14, 14));
+         ghosts.add(new Ghost("two", new Image[0], dxdy, dxdy, 14, 15));
+         ghosts.add(new Ghost("three", new Image[0], dxdy, dxdy, 15, 14));
+         ghosts.add(new Ghost("four", new Image[0], dxdy, dxdy, 15, 15));
          turn();
          timer.setRepeats(true);
          timer.start();
