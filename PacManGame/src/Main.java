@@ -22,7 +22,7 @@ import java.net.URL;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-
+//test
 public class Main extends JPanel {
      private JLabel myLabel;
      private static JPanel panel;
@@ -110,6 +110,7 @@ public class Main extends JPanel {
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
+
         //Setting animation based on user input
         JFrame temp = new JFrame();
         animationBasedOnInput playerAnimation = new animationBasedOnInput();
@@ -118,5 +119,6 @@ public class Main extends JPanel {
         temp.setVisible(true);
         temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         temp.setSize(800,800);
+
     }*/
 }

@@ -103,12 +103,7 @@ public class Moveable {
         return this.images;
     }
   
-	//for testing
-	public void testDraw(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setColor(color);
-		g2.fill(rect);
-	}
+
 	
 	//should return true or false when the player collides with a ghost
 	public boolean collidedWithMoveable(Moveable go) {
@@ -182,6 +177,7 @@ public class Moveable {
 	did not consider different image arrays for different directions.*/
 	//int x represents the direction the object is currently in 
 	//these are tentative draw methods, depending on how Aarya's draw method works
+	
 	public void drawIdle(Graphics g, int x) {
 		if (x == 0) {
 			for (int j = 0; j < 2; j++) {
