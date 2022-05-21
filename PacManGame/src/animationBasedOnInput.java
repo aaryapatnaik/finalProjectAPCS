@@ -24,7 +24,7 @@ public class animationBasedOnInput extends JPanel implements KeyListener, Action
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2D = (Graphics2D) g;
-        g2D.fill(new Ellipse2D.Double(xPos,yPos,40,40));
+        g2D.drawImage(animationImage, xPos, yPos, null);
     }
 
     public void up(){
