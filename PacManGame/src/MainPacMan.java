@@ -48,6 +48,7 @@ import java.awt.*;
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
     }*/
+
      private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
      private static int bluetimer = 0;
@@ -92,7 +93,7 @@ import java.awt.*;
                  checkExit();
                  }
              } 
-     };
+     }
      timer = new javax.swing.Timer(500, taskPerformer);
     }
 
@@ -142,9 +143,9 @@ import java.awt.*;
      public static void main(String args[]) throws IOException
      {
          //new UserInput();
-         //new MainPacMan();
+         new MainPacMan();
          //mainAction();
-         new Animation();
+         //new Animation();
      }
     @Override
     public void actionPerformed(ActionEvent e) {

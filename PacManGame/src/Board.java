@@ -1,4 +1,5 @@
-import java.awt.Rectangle;
+import java.awt.*;
+import javax.swing.ImageIcon;
 
 public class Board {
     private final int height = 28;
@@ -362,4 +363,19 @@ public class Board {
     public Cell getCell(int x, int y) {
         return gameBoard[x][y];
     }
+
+    /* display board 
+    board.drawBoard(g);
+    */
+    public void drawBoard(Graphics g) {
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (int j = 0; j < gameBoard[i].length; i++) {
+                if ((gameBoard[i][j]).getContainsFood()) {
+                    Image img = new ImageIcon("/Users/harininarayanan/apcs/finalProjectAPCS/Media/lasagna.png").getImage();
+                    g.drawImage(img, i, j, null);
+                }
+            }
+        }
+    }
+
 }

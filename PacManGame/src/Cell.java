@@ -1,4 +1,9 @@
+import java.awt.*;
+
+import javax.swing.ImageIcon;
+
 public class Cell {
+    private static Image lasagna = 
     private boolean wall;
     private boolean containsFood;
     private boolean containsBigFood;
