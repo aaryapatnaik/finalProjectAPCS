@@ -22,5 +22,9 @@ public class Ghost extends Moveable {
     public void turnBlue() {
 
     }
+
+    public void turnNormal() {
+        
+    }
     
 }

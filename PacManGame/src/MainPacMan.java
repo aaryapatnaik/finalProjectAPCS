@@ -17,7 +17,7 @@ import java.awt.*;
      private JPanel panel;
      private JButton startButton;
 
-    /* public MainPacMan() throws IOException {
+     public MainPacMan() throws IOException {
         //Setting JFrame
         JFrame frame= new JFrame("PacMan by AP, AV, JI, HN");   
         frame.setSize(1000,1000);            
@@ -47,15 +47,28 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
+<<<<<<< HEAD
     }*/
 
+=======
+        //Setting animation based on user input
+        JFrame temp = new JFrame();
+        animationBasedOnInput playerAnimation = new animationBasedOnInput();
+        frame.add(playerAnimation);
+        temp.add(playerAnimation);
+        temp.setVisible(true);
+        temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        temp.setSize(800,800);
+    }
+    /*
+>>>>>>> 6630ca0b14b41dcf88df057715e7032384a7c051
      private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
      private static int bluetimer = 0;
      private static int numlives = 3;
      private static javax.swing.Timer timer;
      private static Board board = new Board();
-     private static Player p = new Player("", new Image[2], /*new Image[3]*/ 1, 1, 1, 1);
+     private static Player p = new Player("", new Image[2], new Image[3] 1, 1, 1, 1);
 
      public static void turn(){
          ActionListener taskPerformer = new ActionListener() {
@@ -98,7 +111,7 @@ import java.awt.*;
     }
 
      public static void mainAction(){
-         if (/*startbuttonclicked*/){
+         if (/*startbuttonclicked){
              //p.turnright
          }
          final int dxdy = 30;
@@ -139,7 +152,7 @@ import java.awt.*;
      }
 
      
-
+*/
      public static void main(String args[]) throws IOException
      {
          //new UserInput();
