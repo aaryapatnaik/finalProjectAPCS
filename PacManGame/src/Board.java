@@ -371,11 +371,11 @@ public class Board {
         for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard[i].length; i++) {
                 if ((gameBoard[i][j]).getContainsFood()) {
-                    ImageIcon img = new ImageIcon("// small lasagna pathway //");
+                    ImageIcon img = new ImageIcon("/Users/harininarayanan/apcs/finalProjectAPCS/Media/smallLasagna.png");
                     img.paintIcon(c, g, j*25, i*25);
                 }
                 if ((gameBoard[i][j]).getContainsBigFood()) {
-                    ImageIcon img = new ImageIcon("// big lasagna pathway //");
+                    ImageIcon img = new ImageIcon("/Users/harininarayanan/apcs/finalProjectAPCS/Media/bigLasagna.png");
                     img.paintIcon(c, g, j*25, i*25);
                 }
             }
