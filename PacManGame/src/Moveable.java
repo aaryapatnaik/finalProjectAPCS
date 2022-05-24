@@ -103,8 +103,6 @@ public class Moveable {
         return this.images;
     }
   
-
-	
 	//should return true or false when the player collides with a ghost
 	public boolean collidedWithMoveable(Moveable go) {
 		return this.rect.intersects(go.rect);
@@ -145,6 +143,9 @@ public class Moveable {
 		return dir;
 	}
 
+	public int getDirection() {
+		return direction;
+	}
 	//Set of direction changers. 
 	public String turnRight() {
         this.direction = 1;

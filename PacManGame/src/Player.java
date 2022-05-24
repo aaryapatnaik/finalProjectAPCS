@@ -19,15 +19,37 @@ public class Player extends Moveable {
         new Moveable? with predetermined names and image arrays
     }*/
 
+    //draws images based on the direction of the player
     public void draw(Graphics g) {
-        if (counter == 0) {
-            g.draw(imgs[0], (int)this.getX(), (int)this.getY(), null);
-            counter++;
+        if (this.getDirection() == 3){
+            if (counter == 0) {
+                g.draw(imgs[0], (int)this.getX(), (int)this.getY(), null);
+                counter++;
+            }
+            else if (counter == 1) {
+                g.draw(imgs[1], (int)this.getX(), (int)this.getY(), null);
+                counter--;
+            }
         }
-        else if (counter == 0) {
-            g.draw(imgs[1], (int)this.getX(), (int)this.getY(), null);
-            counter--;
+        if (this.getDirection() == 4) {
+            if (counter == 0) {
+                g.draw(imgs[2], (int)this.getX(), (int)this.getY(), null);
+                counter++;
+            }
+            else if (counter == 1) {
+                g.draw(imgs[3], (int)this.getX(), (int)this.getY(), null);
+                counter--;
+            }
+        }
+        if (this.getDirection() == 2||this.getDirection() == 0) {
+            if (counter == 0) {
+                g.draw(imgs[4], (int)this.getX(), (int)this.getY(), null);
+                counter++;
+            }
+            else if (counter == 1) {
+                g.draw(imgs[5], (int)this.getX(), (int)this.getY(), null);
+                counter--;
+            }
         }
     }
-
 }
