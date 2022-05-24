@@ -16,7 +16,7 @@ public class animationBasedOnInput extends JPanel implements KeyListener, Action
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        animationImage = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/working/finalProjectAPCS/Media/Garfield/Garf/garfieldL0.png").getImage();
+        animationImage = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\finalProjectAPCS\\Media\\Garf\\garfieldleRight.png").getImage();
         timer = new Timer(1000, this);
         timer.start();
     }
