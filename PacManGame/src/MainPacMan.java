@@ -47,6 +47,8 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
+    }
+
         //Setting animation based on user input
         JFrame temp = new JFrame();
         animationBasedOnInput playerAnimation = new animationBasedOnInput();
@@ -101,7 +103,7 @@ import java.awt.*;
                  checkExit();
                  }
              } 
-     };
+     }
      timer = new javax.swing.Timer(500, taskPerformer);
     }
 
@@ -148,13 +150,13 @@ import java.awt.*;
 
      
 */
-     public static void main(String args[]) throws IOException
-     {
+     public static void main(String args[]) throws IOException {
          //new UserInput();
          new MainPacMan();
          //mainAction();
          //new Animation();
      }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
