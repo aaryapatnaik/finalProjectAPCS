@@ -47,10 +47,8 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
-<<<<<<< HEAD
-    }*/
+    }
 
-=======
         //Setting animation based on user input
         JFrame temp = new JFrame();
         animationBasedOnInput playerAnimation = new animationBasedOnInput();
@@ -61,7 +59,6 @@ import java.awt.*;
         temp.setSize(800,800);
     }
     /*
->>>>>>> 6630ca0b14b41dcf88df057715e7032384a7c051
      private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
      private static int bluetimer = 0;
@@ -153,13 +150,13 @@ import java.awt.*;
 
      
 */
-     public static void main(String args[]) throws IOException
-     {
+     public static void main(String args[]) throws IOException {
          //new UserInput();
          new MainPacMan();
          //mainAction();
          //new Animation();
      }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
