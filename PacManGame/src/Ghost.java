@@ -16,16 +16,51 @@ public class Ghost extends Moveable {
     }
 
     //allows for a change in vulnerability status of the ghost
-    public void setBeEaten(boolean t) {
-        canBeEaten = t;
+    public void changeBeEaten() {
+        if(canBeEaten==true) {
+            canBeEaten=false;
+        }
+        else if(canBeEaten==false) {
+            canBeEaten=true;
+        }
     }
 
-    public void drawBlue(Graphics g) {
+    public void draw(Graphics g) {
+        if (canBeEaten == false) {
+            if (this.getDirection() == 3){
+                if (counter == 0) {
+                    g.draw(imgs[0], (int)this.getX(), (int)this.getY(), null);
+                    counter++;
+                }
+                else if (counter == 1) {
+                    g.draw(imgs[1], (int)this.getX(), (int)this.getY(), null);
+                    counter--;
+                }
+            }
+            if (this.getDirection() == 4) {
+                if (counter == 0) {
+                    g.draw(imgs[2], (int)this.getX(), (int)this.getY(), null);
+                    counter++;
+                }
+                else if (counter == 1) {
+                    g.draw(imgs[3], (int)this.getX(), (int)this.getY(), null);
+                    counter--;
+                }
+            }
+            if (this.getDirection() == 2||this.getDirection() == 0) {
+                if (counter == 0) {
+                    g.draw(imgs[4], (int)this.getX(), (int)this.getY(), null);
+                    counter++;
+                }
+                else if (counter == 1) {
+                    g.draw(imgs[5], (int)this.getX(), (int)this.getY(), null);
+                    counter--;
+                }
+            }
+        }
+        if(canBeEaten == true) {
 
+        }
     }
 
-    public void drawNormal(Graphics g) {
-        
-    }
-    
 }
