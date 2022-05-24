@@ -47,6 +47,10 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
+<<<<<<< HEAD
+    }*/
+
+=======
         //Setting animation based on user input
         JFrame temp = new JFrame();
         animationBasedOnInput playerAnimation = new animationBasedOnInput();
@@ -56,7 +60,12 @@ import java.awt.*;
         temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         temp.setSize(800,800);
     }
+<<<<<<< HEAD
     
+=======
+    /*
+>>>>>>> 6630ca0b14b41dcf88df057715e7032384a7c051
+>>>>>>> db3137a33f0984ff7308d7f602247990e7ceeeca
      private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
      private static int bluetimer = 0;
@@ -103,7 +112,7 @@ import java.awt.*;
                  checkExit();
                  }
              } 
-     };
+     }
      timer = new javax.swing.Timer(500, taskPerformer);
     }
 
