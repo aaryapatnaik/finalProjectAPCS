@@ -11,6 +11,7 @@ import java.awt.*;
  import javax.swing.JButton;
  import javax.swing.JFrame;
  import javax.swing.ImageIcon;
+ /*
  public class MainPacMan implements ActionListener{
      private ImageIcon lasagna;
      private JLabel myLabel;
@@ -47,10 +48,6 @@ import java.awt.*;
         frame.setVisible(true); 
         startButtonPanel.add(startButton);
         frame.add(startButtonPanel);
-<<<<<<< HEAD
-    }*/
-
-=======
         //Setting animation based on user input
         JFrame temp = new JFrame();
         animationBasedOnInput playerAnimation = new animationBasedOnInput();
@@ -60,13 +57,8 @@ import java.awt.*;
         temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         temp.setSize(800,800);
     }
-<<<<<<< HEAD
     
-=======
-    /*
->>>>>>> 6630ca0b14b41dcf88df057715e7032384a7c051
->>>>>>> db3137a33f0984ff7308d7f602247990e7ceeeca
-     private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
+     /*private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
      private static int score = 0;
      private static int bluetimer = 0;
      private static int numlives = 3;
@@ -86,7 +78,12 @@ import java.awt.*;
                             numlives--;
                             checkLives();
                              //board.reset
-                             Thread.sleep(3000);
+                             try {
+                                Thread.sleep(3000);
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                              p.turnRight();
                             score+=10;
                             }
@@ -112,12 +109,12 @@ import java.awt.*;
                  checkExit();
                  }
              } 
-     }
+     };
      timer = new javax.swing.Timer(500, taskPerformer);
     }
 
      public static void mainAction(){
-         if (/*startbuttonclicked*/){
+         if (startbuttonclicked){
              p.turnRight();
          }
          final int dxdy = 30;
@@ -163,6 +160,7 @@ import java.awt.*;
      {
          //new UserInput();
          new MainPacMan();
+         board.drawBoard(g);
          //mainAction();
          //new Animation();
      }
@@ -171,4 +169,57 @@ import java.awt.*;
         // TODO Auto-generated method stub
         
     }
+}*/
+public class MainPacMan extends JPanel{
+	private static int garfx = 0;
+	private static int garfy = 0;
+	private static int nermx = 840;
+	private static int nermy = 0;
+	private static javax.swing.Timer timer;
+	private static JFrame jf = new JFrame();
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\pacManBoard_840x840.png");
+		i.paintIcon(this, g, 0, 0);
+		ImageIcon garf = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\garfieldleRight_30x30.png");
+		garf.paintIcon(this, g, garfx, garfy);
+		ImageIcon nerm = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\nermalMoveRight_30x30.png");
+		nerm.paintIcon(this, g, nermx, nermy);
+		
+	}
+	
+	public static void main(String[] args) {
+		MainPacMan p = new MainPacMan();
+		jf.setTitle("Pacman by AP, AV, HN, JI");
+		jf.setSize(700, 700);
+		jf.setVisible(true);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.add(p);
+		turn();
+		timer.setRepeats(true);
+		timer.start();
+		
+	}
+	
+	public static void turn(){
+        ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                garfx+=30;
+                nermx-=30;
+                checXit();
+                
+            } 
+    };
+    	timer = new javax.swing.Timer(34, taskPerformer);
+   }
+	
+	public static void checXit() {
+		if (garfx == nermx) {
+			timer.stop();
+		}
+		jf.repaint();
+	}
+
+
 }

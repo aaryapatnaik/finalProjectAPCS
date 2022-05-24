@@ -1,5 +1,5 @@
 import java.awt.*;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class Board {
     private final int height = 28;
@@ -367,12 +367,12 @@ public class Board {
     /* display board 
     board.drawBoard(g);
     */
-    public void drawBoard(Graphics g) {
+    public void drawBoard(Graphics g, Component c) {
         for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard[i].length; i++) {
                 if ((gameBoard[i][j]).getContainsFood()) {
-                    Image img = new ImageIcon("/Users/harininarayanan/apcs/finalProjectAPCS/Media/lasagna.png").getImage();
-                    g.drawImage(img, i, j, null);
+                    ImageIcon img = new ImageIcon("/Users/harininarayanan/apcs/finalProjectAPCS/Media/lasagna.png");
+                    img.paintIcon(c, g, j*30, i*30);
                 }
             }
         }

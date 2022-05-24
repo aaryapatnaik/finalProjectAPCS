@@ -2,6 +2,7 @@ import java.awt.*;
 public class Ghost extends Moveable {
 
     private static boolean canBeEaten;
+    private static int counter = 0;
 
     //constructor for the normal ghost
     public Ghost(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
@@ -19,11 +20,11 @@ public class Ghost extends Moveable {
         canBeEaten = t;
     }
 
-    public void turnBlue() {
+    public void drawBlue(Graphics g) {
 
     }
 
-    public void turnNormal() {
+    public void drawNormal(Graphics g) {
         
     }
     
