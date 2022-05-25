@@ -170,16 +170,24 @@ import java.awt.*;
         
     }
 }*/
-public class MainPacMan extends JPanel{
+public class MainPacMan extends JPanel implements KeyListener{
 	private static int garfx = 0;
 	private static int garfy = 25;
-	private static int nermx = 700;
-	private static int nermy = 25;
+    private static int prevgarfx = 0;
+    private static int prevgarfy = 0;
+	private static int nermx = 325;
+	private static int nermy = 325;
+    private static int dir = 0;
 	private static javax.swing.Timer timer;
 	private static JFrame jf = new JFrame();
     private static Board board = new Board();
     private static int score = 0;
 	
+    public MainPacMan(){
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+    }
     public static ImageIcon pickPlayerImage(int dir){
         if (dir == 0){
             return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
@@ -213,13 +221,13 @@ public class MainPacMan extends JPanel{
 		super.paintComponent(g);
 		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
 		i.paintIcon(this, g, 0, 0);
-		ImageIcon garf = pickPlayerImage(0);
+		ImageIcon garf = pickPlayerImage(dir);
 		garf.paintIcon(this, g, garfx, garfy);
         for (int x = 0; x <28; x++) {
             for (int j = 0; j <28; j++) {
                 if ((board.getCell(x, j)).getContainsFood()) {
                     ImageIcon img = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\smallLasagna.png");
-                    img.paintIcon(this, g, j*25, x*25);
+                    img.paintIcon(this, g, (j*25)+5, (x*25)+5);
                 }
                 if ((board.getCell(x, j)).getContainsBigFood()) {
                     ImageIcon img2 = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\bigLasagna.png");
@@ -234,7 +242,6 @@ public class MainPacMan extends JPanel{
 	public static void main(String[] args) {
 		MainPacMan p = new MainPacMan();
 		jf.setTitle("Pacman by AP, AV, HN, JI");
-		jf.setSize(700, 700);
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.add(p);
@@ -255,28 +262,95 @@ public class MainPacMan extends JPanel{
         }
     }
 
+    public static void movePlayer(){
+        prevgarfx = garfx;
+        prevgarfy = garfy;
+        if (dir==0){
+            garfx+=25;
+        }
+        else if (dir==1){
+            garfx-=25;
+        }
+        else if (dir==2){
+            garfy-=25;
+        }
+        else{
+            garfy+=25;
+        }
+    }
     
 	public static void turn(){
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                garfx+=25;
-                nermx-=25;
+                movePlayer();
+                //nermx-=25;
                 eatFood(garfy/25, garfx/25);
                 jf.repaint();
                 checXit();
             } 
     };
-    	timer = new javax.swing.Timer(100, taskPerformer);
+    	timer = new javax.swing.Timer(250, taskPerformer);
    }
 	
    
 	public static void checXit() {
-		if (((garfx == nermx)||(Math.abs(garfx-nermx)==25)) && ((garfy == nermy)||(Math.abs(garfy-nermy)==25))){
+        if (!board.containsFood()){
+            timer.stop();
+            //pull up menu page
+        }
+        boolean a = (garfx == nermx)&&(prevgarfx == garfx)&&(prevgarfy == nermy);
+        boolean b = (garfy == nermy)&&(prevgarfy == garfy)&&(prevgarfx == nermx);
+        boolean c = (garfx == nermx)&&(garfy == nermy);
+		if (c||a||b){
 			timer.stop();
             System.out.println(score);
 		}
 
 	}
+    
+    public void up(){
+        dir=2;
+    }
 
+    public void down(){
+        dir = 3;
+    }
+
+    public void right(){
+        dir=0;
+    }
+
+    public void left(){
+        dir = 1;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyVal = e.getKeyCode();
+        if (keyVal == KeyEvent.VK_UP) {
+            up();
+        }
+        if (keyVal == KeyEvent.VK_DOWN) {
+            down();
+        }
+        if (keyVal == KeyEvent.VK_LEFT) {
+            left();
+        }
+        if (keyVal == KeyEvent.VK_RIGHT) {
+            right();
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
 
 }
