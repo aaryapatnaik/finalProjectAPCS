@@ -180,14 +180,41 @@ public class MainPacMan extends JPanel{
     private static Board board = new Board();
     private static int score = 0;
 	
+    public static ImageIcon pickPlayerImage(int dir){
+        if (dir == 0){
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
+        }
+        else if (dir == 1){
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleLeft.jpg");
+        }
+        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleUpDown.jpg");
+    }
+
+    public static ImageIcon pickGhostImage(int dir, boolean isBlue){
+        if (dir == 0){
+            if (isBlue){
+                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveR.png");
+            }
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleRight.jpg");
+        }
+        else if (dir == 1){
+            if (isBlue){
+                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveL.jpeg");
+            }
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleLeft.jpg");
+        }
+        if (isBlue){
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveUD.png");
+        }
+        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleUpDown.jpg");
+    }
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
 		i.paintIcon(this, g, 0, 0);
-		ImageIcon garf = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
+		ImageIcon garf = pickPlayerImage(0);
 		garf.paintIcon(this, g, garfx, garfy);
-		ImageIcon nerm = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalMoveUpDown-removebg-preview.png");
-		nerm.paintIcon(this, g, nermx, nermy);
         for (int x = 0; x <28; x++) {
             for (int j = 0; j <28; j++) {
                 if ((board.getCell(x, j)).getContainsFood()) {
@@ -200,6 +227,8 @@ public class MainPacMan extends JPanel{
                 }
             }
         }
+        ImageIcon nerm = pickGhostImage(1, false);
+		nerm.paintIcon(this, g, nermx, nermy);
 	}
 	
 	public static void main(String[] args) {
