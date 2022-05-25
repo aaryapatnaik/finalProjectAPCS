@@ -25,7 +25,7 @@ public class Ghost extends Moveable {
         }
     }
 
-    public void draw(Graphics g) {
+   /* public void draw(Graphics g) {
         if (canBeEaten == false) {
             if (this.getDirection() == 3){
                 if (counter == 0) {
@@ -61,6 +61,6 @@ public class Ghost extends Moveable {
         if(canBeEaten == true) {
 
         }
-    }
+    }*/
 
 }

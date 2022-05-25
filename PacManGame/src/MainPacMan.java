@@ -172,21 +172,34 @@ import java.awt.*;
 }*/
 public class MainPacMan extends JPanel{
 	private static int garfx = 0;
-	private static int garfy = 0;
-	private static int nermx = 840;
-	private static int nermy = 0;
+	private static int garfy = 25;
+	private static int nermx = 700;
+	private static int nermy = 25;
 	private static javax.swing.Timer timer;
 	private static JFrame jf = new JFrame();
+    private static Board board = new Board();
+    private static int score = 0;
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\pacManBoard_840x840.png");
+		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
 		i.paintIcon(this, g, 0, 0);
-		ImageIcon garf = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\garfieldleRight_30x30.png");
+		ImageIcon garf = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
 		garf.paintIcon(this, g, garfx, garfy);
-		ImageIcon nerm = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\nermalMoveRight_30x30.png");
+		ImageIcon nerm = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalMoveUpDown-removebg-preview.png");
 		nerm.paintIcon(this, g, nermx, nermy);
-		
+        for (int x = 0; x <28; x++) {
+            for (int j = 0; j <28; j++) {
+                if ((board.getCell(x, j)).getContainsFood()) {
+                    ImageIcon img = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\smallLasagna.png");
+                    img.paintIcon(this, g, j*25, x*25);
+                }
+                if ((board.getCell(x, j)).getContainsBigFood()) {
+                    ImageIcon img2 = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\bigLasagna.png");
+                    img2.paintIcon(this, g, j*25, x*25);
+                }
+            }
+        }
 	}
 	
 	public static void main(String[] args) {
@@ -202,23 +215,38 @@ public class MainPacMan extends JPanel{
 		
 	}
 	
+    public static void eatFood(int x, int y){
+        if (board.getCell(x, y).getContainsFood()){
+            score+=10;
+            board.getCell(x, y).setFood(false);
+        }
+        if (board.getCell(x, y).getContainsBigFood()){
+            score+=20;
+            board.getCell(x, y).setBigFood(false);
+        }
+    }
+
+    
 	public static void turn(){
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                garfx+=30;
-                nermx-=30;
+                garfx+=25;
+                nermx-=25;
+                eatFood(garfy/25, garfx/25);
+                jf.repaint();
                 checXit();
-                
             } 
     };
-    	timer = new javax.swing.Timer(34, taskPerformer);
+    	timer = new javax.swing.Timer(100, taskPerformer);
    }
 	
+   
 	public static void checXit() {
-		if (garfx == nermx) {
+		if (((garfx == nermx)||(Math.abs(garfx-nermx)==25)) && ((garfy == nermy)||(Math.abs(garfy-nermy)==25))){
 			timer.stop();
+            System.out.println(score);
 		}
-		jf.repaint();
+
 	}
 
 

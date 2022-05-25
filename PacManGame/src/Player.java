@@ -20,7 +20,7 @@ public class Player extends Moveable {
     }*/
 
     //draws images based on the direction of the player
-    public void draw(Graphics g) {
+    /*public void draw(Graphics g) {
         if (this.getDirection() == 3){
             if (counter == 0) {
                 g.draw(imgs[0], (int)this.getX(), (int)this.getY(), null);
@@ -51,5 +51,5 @@ public class Player extends Moveable {
                 counter--;
             }
         }
-    }
+    }*/
 }
