@@ -170,29 +170,78 @@ import java.awt.*;
         
     }
 }*/
-public class MainPacMan extends JPanel{
+public class MainPacMan extends JPanel implements KeyListener{
 	private static int garfx = 0;
-	private static int garfy = 0;
-	private static int nermx = 840;
-	private static int nermy = 0;
+	private static int garfy = 25;
+    private static int prevgarfx = 0;
+    private static int prevgarfy = 0;
+	private static int nermx = 325;
+	private static int nermy = 325;
+    private static int dir = 0;
 	private static javax.swing.Timer timer;
 	private static JFrame jf = new JFrame();
+    private static Board board = new Board();
+    private static int score = 0;
 	
+    public MainPacMan(){
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+    }
+    public static ImageIcon pickPlayerImage(int dir){
+        if (dir == 0){
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
+        }
+        else if (dir == 1){
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleLeft.jpg");
+        }
+        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleUpDown.jpg");
+    }
+
+    public static ImageIcon pickGhostImage(int dir, boolean isBlue){
+        if (dir == 0){
+            if (isBlue){
+                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveR.png");
+            }
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleRight.jpg");
+        }
+        else if (dir == 1){
+            if (isBlue){
+                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveL.jpeg");
+            }
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleLeft.jpg");
+        }
+        if (isBlue){
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveUD.png");
+        }
+        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleUpDown.jpg");
+    }
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\pacManBoard_840x840.png");
+		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
 		i.paintIcon(this, g, 0, 0);
-		ImageIcon garf = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\garfieldleRight_30x30.png");
+		ImageIcon garf = pickPlayerImage(dir);
 		garf.paintIcon(this, g, garfx, garfy);
-		ImageIcon nerm = new ImageIcon("C:\\Users\\abhir\\Downloads\\pacman\\nermalMoveRight_30x30.png");
+        for (int x = 0; x <28; x++) {
+            for (int j = 0; j <28; j++) {
+                if ((board.getCell(x, j)).getContainsFood()) {
+                    ImageIcon img = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\smallLasagna.png");
+                    img.paintIcon(this, g, (j*25)+5, (x*25)+5);
+                }
+                if ((board.getCell(x, j)).getContainsBigFood()) {
+                    ImageIcon img2 = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\bigLasagna.png");
+                    img2.paintIcon(this, g, j*25, x*25);
+                }
+            }
+        }
+        ImageIcon nerm = pickGhostImage(1, false);
 		nerm.paintIcon(this, g, nermx, nermy);
-		
 	}
 	
 	public static void main(String[] args) {
 		MainPacMan p = new MainPacMan();
 		jf.setTitle("Pacman by AP, AV, HN, JI");
-		jf.setSize(700, 700);
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.add(p);
@@ -202,24 +251,106 @@ public class MainPacMan extends JPanel{
 		
 	}
 	
+    public static void eatFood(int x, int y){
+        if (board.getCell(x, y).getContainsFood()){
+            score+=10;
+            board.getCell(x, y).setFood(false);
+        }
+        if (board.getCell(x, y).getContainsBigFood()){
+            score+=20;
+            board.getCell(x, y).setBigFood(false);
+        }
+    }
+
+    public static void movePlayer(){
+        prevgarfx = garfx;
+        prevgarfy = garfy;
+        if (dir==0){
+            garfx+=25;
+        }
+        else if (dir==1){
+            garfx-=25;
+        }
+        else if (dir==2){
+            garfy-=25;
+        }
+        else{
+            garfy+=25;
+        }
+    }
+    
 	public static void turn(){
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                garfx+=30;
-                nermx-=30;
+                movePlayer();
+                //nermx-=25;
+                eatFood(garfy/25, garfx/25);
+                jf.repaint();
                 checXit();
-                
             } 
     };
-    	timer = new javax.swing.Timer(34, taskPerformer);
+    	timer = new javax.swing.Timer(250, taskPerformer);
    }
 	
+   
 	public static void checXit() {
-		if (garfx == nermx) {
+        if (!board.containsFood()){
+            timer.stop();
+            //pull up menu page
+        }
+        boolean a = (garfx == nermx)&&(prevgarfx == garfx)&&(prevgarfy == nermy);
+        boolean b = (garfy == nermy)&&(prevgarfy == garfy)&&(prevgarfx == nermx);
+        boolean c = (garfx == nermx)&&(garfy == nermy);
+		if (c||a||b){
 			timer.stop();
+            System.out.println(score);
 		}
-		jf.repaint();
-	}
 
+	}
+    
+    public void up(){
+        dir=2;
+    }
+
+    public void down(){
+        dir = 3;
+    }
+
+    public void right(){
+        dir=0;
+    }
+
+    public void left(){
+        dir = 1;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyVal = e.getKeyCode();
+        if (keyVal == KeyEvent.VK_UP) {
+            up();
+        }
+        if (keyVal == KeyEvent.VK_DOWN) {
+            down();
+        }
+        if (keyVal == KeyEvent.VK_LEFT) {
+            left();
+        }
+        if (keyVal == KeyEvent.VK_RIGHT) {
+            right();
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
 
 }
