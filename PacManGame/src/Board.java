@@ -57,7 +57,7 @@ public class Board {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
-        for (int i = 7; i <= 7; i++) {
+        for (int i = 7; i <= 8; i++) {
             for (int j = 6; j <= 7; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
@@ -248,16 +248,16 @@ public class Board {
             }
         }
         // fifteenth row of walls
-        for (int i = 1; i <= 2; i++) {
-            for (int j = 24; j <= 25; j++) {
-                gameBoard[j][i] = new Cell(true,false);
-            }
-        }
-        for (int i = 25; i <= 26; i++) {
-            for (int j = 24; j <= 25; j++) {
-                gameBoard[j][i] = new Cell(true,false);
-            }
-        }
+        // for (int i = 1; i <= 2; i++) {
+        //     for (int j = 24; j <= 25; j++) {
+        //         gameBoard[j][i] = new Cell(true,false);
+        //     }
+        // }
+        // for (int i = 25; i <= 26; i++) {
+        //     for (int j = 24; j <= 25; j++) {
+        //         gameBoard[j][i] = new Cell(true,false);
+        //     }
+        // }
         for (int i = 10; i <= 17; i++) {
             for (int j = 24; j <= 25; j++) {
                 gameBoard[j][i] = new Cell(true,false);
@@ -321,20 +321,17 @@ public class Board {
 
         // remove food from sides
         for (int i = 1; i <= 4; i++) {
-            for (int j = 10; j <= 12; j++) {
+            for (int j = 10; j <= 13; j++) {
                 gameBoard[j][i] = new Cell(false,false);
             }
         }
-        for (int i = 1; i <= 12; i++) {
-            gameBoard[1][i] = new Cell(false,true);
-        }
-        gameBoard[13][1] = new Cell(true,false);
-        gameBoard[15][1] = new Cell(true,false);
+        gameBoard[13][1] = new Cell(false,false);
+        gameBoard[15][1] = new Cell(false,false);
 
         
 
         for (int i = 23; i <= 26; i++) {
-            for (int j = 10; j <= 12; j++) {
+            for (int j = 10; j <= 13; j++) {
                 gameBoard[j][i] = new Cell(false,false);
             }
         }
@@ -344,7 +341,7 @@ public class Board {
             }
         }
         for (int i = 23; i <= 26; i++) {
-            for (int j = 16; j <= 18; j++) {
+            for (int j = 15; j <= 18; j++) {
                 gameBoard[j][i] = new Cell(false,false);
             }
         }
