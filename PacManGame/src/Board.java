@@ -307,10 +307,17 @@ public class Board {
             gameBoard[i][10] = new Cell (true,false);
             gameBoard[i][17] = new Cell (true,false);
         }
+
+        // remove food from spawning point
+        for (int i = 13; i <= 15; i++) {
+            for (int j = 11; j <=16; j++) {
+                gameBoard[i][j] = new Cell (false, false);
+            }
+        }
         
         // opening in spawning point for exit
-        gameBoard[10][13] = new Cell (false,false);
-        gameBoard[10][14] = new Cell (false,false);
+        gameBoard[12][13] = new Cell(false,false);
+        gameBoard[12][14] = new Cell(false,false);
 
         // remove food from sides
         for (int i = 1; i <= 4; i++) {
@@ -318,6 +325,14 @@ public class Board {
                 gameBoard[j][i] = new Cell(false,false);
             }
         }
+        for (int i = 1; i <= 12; i++) {
+            gameBoard[1][i] = new Cell(false,true);
+        }
+        gameBoard[13][1] = new Cell(true,false);
+        gameBoard[15][1] = new Cell(true,false);
+
+        
+
         for (int i = 23; i <= 26; i++) {
             for (int j = 10; j <= 12; j++) {
                 gameBoard[j][i] = new Cell(false,false);
