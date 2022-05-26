@@ -179,7 +179,7 @@ public class MainPacMan extends JPanel implements KeyListener{
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
+		ImageIcon i = new ImageIcon("Media\\Garfield\\pacManBoard.png");
 		i.paintIcon(this, g, 0, 0);
 		ImageIcon garf = pickPlayerImage(dir);
 		garf.paintIcon(this, g, garfx, garfy);
