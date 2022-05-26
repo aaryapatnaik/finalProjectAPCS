@@ -13,6 +13,7 @@ public class Player extends Moveable {
     if that might work*/
     public Player(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
         super(na, imgs, dx, dy, spawnX, spawnY);
+        super.setDirection(0);
 	}
 
     /*public Player() {

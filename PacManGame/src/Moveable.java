@@ -33,13 +33,10 @@ public class Moveable {
 	/*creates a new moveable with a name, image arrays, the horizontal distance change, the vertical distance change,
 	and the intial location of the rectangle object.*/
 
-	public Moveable(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
-		name = na;
+	public Moveable(int spawnX, int spawnY) {
 		rect = new Rectangle(spawnX, spawnY, 25, 25);
 		images = imgs;
-		this.dx = dx;
-		this.dy = dy;
-		this.direction = 1; //the objects will start facing east
+		
 	}
 
 	//getters in case it is needed for a comparison method of sorts
@@ -171,15 +168,5 @@ public class Moveable {
 		this.direction = i;
 		return "Changed direction to" + i;
 	}
-
-
-	/** Pretty basic right now, but can make this way better!*/
-	/*rather nonfunctional as of right now. Intention was the display the images in the array when the player moves.
-	did not consider different image arrays for different directions.*/
-	//int x represents the direction the object is currently in 
-	//these are tentative draw methods, depending on how Aarya's draw method works
-	
-	//should just draw one image and swith between the two based on a counter
-	//there should be a counter/boolean unique to player and ghost that will help which image to choose and draw.
 
 }
