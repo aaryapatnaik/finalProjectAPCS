@@ -5,9 +5,10 @@ public class Ghost extends Moveable {
     private static int counter = 0;
 
     //constructor for the normal ghost
-    public Ghost(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
-        super(na, imgs, dx, dy, spawnX, spawnY);
+    public Ghost(int spawnX, int spawnY) {
+        super(spawnX, spawnY, 25, 25);
         canBeEaten = false;
+        super.setDirection(3);
 	}
 
     //returns the vulnerability status of the ghost
@@ -25,7 +26,7 @@ public class Ghost extends Moveable {
         }
     }
 
-   /* public void draw(Graphics g) {
+    public void draw(Graphics g) {
         if (canBeEaten == false) {
             if (this.getDirection() == 3){
                 if (counter == 0) {
@@ -90,6 +91,6 @@ public class Ghost extends Moveable {
                 }
             }
         }
-    }*/
+    }
 
 }
