@@ -141,6 +141,7 @@ public class MainPacMan extends JPanel implements KeyListener{
     private static int bluetimer = 0;
     private static boolean isBlue = false;
     private static int nermdir = 1;
+    private static int speed = 50;
 	
     public MainPacMan(){
         addKeyListener(this);
@@ -157,14 +158,14 @@ public class MainPacMan extends JPanel implements KeyListener{
         return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleUpDown.jpg");
     }
 
-    public static ImageIcon pickGhostImage(int dir, boolean isblue){
-        if (dir == 0){
+    public static ImageIcon pickGhostImage(int direc, boolean isblue){
+        if (direc == 0){
             if (isBlue){
                 return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveR.png");
             }
             return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleRight.jpg");
         }
-        else if (dir == 1){
+        else if (direc == 1){
             if (isBlue){
                 return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveL.jpeg");
             }
@@ -194,11 +195,14 @@ public class MainPacMan extends JPanel implements KeyListener{
                 }
             }
         }
-        ImageIcon nerm = pickGhostImage(1, false);
+        ImageIcon nerm = pickGhostImage(nermdir, isBlue);
 		nerm.paintIcon(this, g, nermx, nermy);
 	}
 	
 	public static void main(String[] args) {
+        System.out.println("Select a speed (milliseconds per step): ");
+        Scanner sc = new Scanner(System.in);
+        speed = sc.nextInt();
 		MainPacMan p = new MainPacMan();
 		jf.setTitle("Pacman (Garfield Edition)");
 		jf.setVisible(true);
@@ -217,7 +221,7 @@ public class MainPacMan extends JPanel implements KeyListener{
         }
         if (board.getCell(x, y).getContainsBigFood()){
             score+=50;
-            bluetimer = 80;
+            bluetimer = (1000/speed)*10;
             isBlue = true;
             board.getCell(x, y).setBigFood(false);
         }
@@ -285,7 +289,7 @@ public class MainPacMan extends JPanel implements KeyListener{
                 isBlue = bluetimer>0;
             } 
     };
-    	timer = new javax.swing.Timer(250, taskPerformer);
+    	timer = new javax.swing.Timer(speed, taskPerformer);
    }
 	
    
@@ -305,9 +309,18 @@ public class MainPacMan extends JPanel implements KeyListener{
 		if (c||a||b){
             if (isBlue){
                 score+=200;
+                bluetimer = 1;
+                nermy = 25;
+                nermx = 650;
             }
             else{
-                timer.stop();
+                lives--;
+                dir = 0;
+                nermdir = 1;
+                garfx = 0;
+                garfy = 25;
+                nermx = 650;
+                nermy = 25;
             }
 		}
 
