@@ -126,7 +126,7 @@ import java.awt.*;
      }
 }*/
 public class MainPacMan extends JPanel implements KeyListener{
-	private static int garfx = 0;
+	private static int garfx = 25;
 	private static int garfy = 25;
     private static int prevgarfx = 0;
     private static int prevgarfy = 0;
@@ -180,7 +180,7 @@ public class MainPacMan extends JPanel implements KeyListener{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		// ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
-		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\blackCell.jpg");
+		/*ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\blackCell.jpg");
         ImageIcon k = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\blueCell.jpg");
         for (int a = 0; a < 28; a++) {
             for (int b = 0; b < 28; b++) {
@@ -190,8 +190,21 @@ public class MainPacMan extends JPanel implements KeyListener{
                     i.paintIcon(this,g,(b*25), (a*25));
                 }
             }
-        }
+        }*/
         //i.paintIcon(this, g, 0, 0);
+		ImageIcon i = new ImageIcon("finalProjectAPCS/Media/newBoard.png");
+		// ImageIcon i = new ImageIcon("finalProjectAPCS/Media/blackCell.jpg");
+        // ImageIcon k = new ImageIcon("finalProjectAPCS/Media/blueCell.jpg");
+        // for (int a = 0; a < 28; a++) {
+        //     for (int b = 0; b < 28; b++) {
+        //         if ((board.getCell(a,b)).getWall()) {
+        //             k.paintIcon(this,g,(b*25), (a*25));
+        //         } else if (!(board.getCell(a,b)).getWall()) {
+        //             i.paintIcon(this,g,(b*25), (a*25));
+        //         }
+        //     }
+        // }
+        i.paintIcon(this, g, 0, 0);
 		ImageIcon garf = pickPlayerImage(dir);
 		garf.paintIcon(this, g, garfx, garfy);
         for (int x = 0; x <28; x++) {

@@ -11,8 +11,13 @@
     //private int counter = 0;
     /* consider making the constructor empty (without parameters). Pay attention to Aarya's work to see 
     if that might work*/
+<<<<<<< HEAD
    /* public Player(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
         super(na, imgs, dx, dy, spawnX, spawnY);
+=======
+    public Player(int spawnX, int spawnY) {
+        super(spawnX, spawnY);
+>>>>>>> 571a0a5ce429fdbc977f6910236362ad271c7b21
         super.setDirection(0);
 	}*/
 

@@ -35,7 +35,10 @@ public class Moveable {
 
 	public Moveable(int spawnX, int spawnY) {
 		rect = new Rectangle(spawnX, spawnY, 25, 25);
+<<<<<<< HEAD
 		//images = imgs;
+=======
+>>>>>>> 571a0a5ce429fdbc977f6910236362ad271c7b21
 		
 	}
 
