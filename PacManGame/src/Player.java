@@ -11,8 +11,8 @@ public class Player extends Moveable {
     private int counter = 0;
     /* consider making the constructor empty (without parameters). Pay attention to Aarya's work to see 
     if that might work*/
-    public Player(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
-        super(na, imgs, dx, dy, spawnX, spawnY);
+    public Player(int spawnX, int spawnY) {
+        super(spawnX, spawnY);
         super.setDirection(0);
 	}
 

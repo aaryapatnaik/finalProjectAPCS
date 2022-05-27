@@ -150,36 +150,35 @@ public class MainPacMan extends JPanel implements KeyListener{
     }
     public static ImageIcon pickPlayerImage(int dir){
         if (dir == 0){
-            return new ImageIcon("finalProjectAPCS/Media/Garfield/Garf/garfIdleRight.jpg");
+            return new ImageIcon("Media/Garfield/Garf/garfIdleRight.jpg");
         }
         else if (dir == 1){
-            return new ImageIcon("finalProjectAPCS/Media/Garfield/Garf/garfIdleLeft.jpg");
+            return new ImageIcon("Media/Garfield/Garf/garfIdleLeft.jpg");
         }
-        return new ImageIcon("finalProjectAPCS/Media/Garfield/Garf/garfIdleUpDown.jpg");
+        return new ImageIcon("Media/Garfield/Garf/garfIdleUpDown.jpg");
     }
 
     public static ImageIcon pickGhostImage(int direc, boolean isblue){
         if (direc == 0){
             if (isBlue){
-                return new ImageIcon("finalProjectAPCS/Media/Garfield/Nermal/ghostNermalMoveR.png");
+                return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveR.png");
             }
-            return new ImageIcon("finalProjectAPCS/Media/Garfield/Nermal/nermalIdleRight.jpg");
+            return new ImageIcon("Media/Garfield/Nermal/nermalIdleRight.jpg");
         }
         else if (direc == 1){
             if (isBlue){
-                return new ImageIcon("finalProjectAPCS/Media/Garfield/Nermal/ghostNermalMoveL.jpeg");
+                return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveL.jpeg");
             }
-            return new ImageIcon("finalProjectAPCS/Media/Garfield/Nermal/nermalIdleLeft.jpg");
+            return new ImageIcon("Media/Garfield/Nermal/nermalIdleLeft.jpg");
         }
         if (isBlue){
-            return new ImageIcon("finalProjectAPCS/Media/Garfield/Nermal/ghostNermalMoveUD.png");
+            return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveUD.png");
         }
-        return new ImageIcon("finalProjectAPCS/Media/Garfield/Nermal/nermalIdleUpDown.jpg");
+        return new ImageIcon("Media/Garfield/Nermal/nermalIdleUpDown.jpg");
     }
-
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		ImageIcon i = new ImageIcon("finalProjectAPCS/Media/newBoard.png");
+		ImageIcon i = new ImageIcon("Media/newBoard.png");
 		// ImageIcon i = new ImageIcon("finalProjectAPCS/Media/blackCell.jpg");
         // ImageIcon k = new ImageIcon("finalProjectAPCS/Media/blueCell.jpg");
         // for (int a = 0; a < 28; a++) {
@@ -197,11 +196,11 @@ public class MainPacMan extends JPanel implements KeyListener{
         for (int x = 0; x <28; x++) {
             for (int j = 0; j <28; j++) {
                 if ((board.getCell(x, j)).getContainsFood()) {
-                    ImageIcon img = new ImageIcon("finalProjectAPCS/Media/smallLasagna.png");
+                    ImageIcon img = new ImageIcon("Media/smallLasagna.png");
                     img.paintIcon(this, g, (j*25)+5, (x*25)+5);
                 }
                 if ((board.getCell(x, j)).getContainsBigFood()) {
-                    ImageIcon img2 = new ImageIcon("finalProjectAPCS/Media/bigLasagna.png");
+                    ImageIcon img2 = new ImageIcon("Media/bigLasagna.png");
                     img2.paintIcon(this, g, j*25, x*25);
                 }
             }
