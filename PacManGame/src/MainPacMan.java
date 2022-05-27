@@ -178,7 +178,7 @@ public class MainPacMan extends JPanel implements KeyListener{
     }
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		ImageIcon i = new ImageIcon("Media/newBoard.png");
+		ImageIcon i = new ImageIcon("finalProjectAPCS/Media/newBoard.png");
 		// ImageIcon i = new ImageIcon("finalProjectAPCS/Media/blackCell.jpg");
         // ImageIcon k = new ImageIcon("finalProjectAPCS/Media/blueCell.jpg");
         // for (int a = 0; a < 28; a++) {

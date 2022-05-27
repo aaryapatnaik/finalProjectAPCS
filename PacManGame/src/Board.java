@@ -356,6 +356,18 @@ public class Board {
             }
         }
 
+        // side box walls
+        for (int i = 9; i <= 13; i++) {
+            for (int j = 1; j <= 5; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
+        for (int i = 9; i <= 13; i++) {
+            for (int j = 23; j <= 27; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
+
         
     }
 
