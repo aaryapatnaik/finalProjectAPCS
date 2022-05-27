@@ -1,29 +1,24 @@
 import java.awt.*;
 public class Ghost extends Moveable {
 
-    private static boolean canBeEaten;
+    private static boolean blue;
     private static int counter = 0;
 
     //constructor for the normal ghost
     public Ghost(int spawnX, int spawnY) {
         super(spawnX, spawnY);
-        canBeEaten = false;
+        blue = false;
         super.setDirection(3);
 	}
 
     //returns the vulnerability status of the ghost
-    public boolean getBeEaten() {
-        return canBeEaten;
+    public boolean isBlue() {
+        return blue;
     }
 
     //allows for a change in vulnerability status of the ghost
-    public void changeBeEaten() {
-        if(canBeEaten==true) {
-            canBeEaten=false;
-        }
-        else if(canBeEaten==false) {
-            canBeEaten=true;
-        }
+    public void setIsBlue(Boolean p) {
+        blue=p;
     }
 
     /*public void draw(Graphics g) {

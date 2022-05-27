@@ -40,14 +40,15 @@ public class Moveable {
 
 	//getters in case it is needed for a comparison method of sorts
 	//returns the integer x coordinate of the moveable
-	public double getX() {
-		return this.rect.x;
+	public int getX() {
+		return (int)(this.rect.x);
 	}
 
 	//returns the integer y coordinate of the moveable
-	public double getY() {
-		return this.rect.y;
+	public int getY() {
+		return (int)(this.rect.y);
 	}
+
 
 	//gets horizontal distance change per refresh
 	public double getDx() {
@@ -142,13 +143,14 @@ public class Moveable {
 	public int getDirection() {
 		return direction;
 	}
+
 	//Set of direction changers. 
 	public String turnRight() {
-        this.direction = 1;
+        this.direction = 0;
 		return "Turned right!";
     }
     public String turnLeft() {
-		this.direction = 3;
+		this.direction = 1;
 		return "Turned left!";
     }
     public String turnDown() {
@@ -156,7 +158,7 @@ public class Moveable {
 		return "Turned down!";
     }
     public String turnUp() {
-		this.direction = 0;
+		this.direction = 3;
 		return "Turned up!";
     }
 
