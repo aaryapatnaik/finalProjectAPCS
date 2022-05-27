@@ -62,7 +62,7 @@ public class Board {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
-        for (int i = 9; i <= 17; i++) {
+        for (int i = 10; i <= 17; i++) {
             for (int j = 6; j <= 7; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
