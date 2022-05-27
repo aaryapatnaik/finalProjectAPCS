@@ -1,4 +1,4 @@
-import java.awt.*;
+/*import java.awt.*;
 public class Ghost extends Moveable {
 
     private static boolean canBeEaten;
@@ -93,4 +93,4 @@ public class Ghost extends Moveable {
         }
     }
 
-}
+}*/

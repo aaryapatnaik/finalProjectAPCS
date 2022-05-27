@@ -1,20 +1,20 @@
 
-import java.awt.*;
+//import java.awt.*;
 
-public class Player extends Moveable {
+//public class Player extends Moveable {
 
     /*player in and of itself is just a moveable object. The unique parameters like score and number of lives are
     already present in the main.*/
 
 
     //constructor for the player
-    private int counter = 0;
+    //private int counter = 0;
     /* consider making the constructor empty (without parameters). Pay attention to Aarya's work to see 
     if that might work*/
-    public Player(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
+   /* public Player(String na, Image[] imgs, int dx, int dy, int spawnX, int spawnY) {
         super(na, imgs, dx, dy, spawnX, spawnY);
         super.setDirection(0);
-	}
+	}*/
 
     /*public Player() {
         new Moveable? with predetermined names and image arrays
@@ -52,5 +52,5 @@ public class Player extends Moveable {
                 counter--;
             }
         }
-    }*/
-}
+    }
+}*/
