@@ -62,7 +62,7 @@ public class Board {
                 gameBoard[j][i] = new Cell(true,false);
             }
         }
-        for (int i = 9; i <= 17; i++) {
+        for (int i = 10; i <= 17; i++) {
             for (int j = 6; j <= 7; j++) {
                 gameBoard[j][i] = new Cell(true,false);
             }
@@ -356,6 +356,19 @@ public class Board {
             }
         }
         gameBoard[19][26] = new Cell(true, false);
+
+        // side box walls
+        for (int i = 9; i <= 13; i++) {
+            for (int j = 1; j <= 5; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
+        for (int i = 9; i <= 13; i++) {
+            for (int j = 23; j <= 27; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
+
         
     }
 
