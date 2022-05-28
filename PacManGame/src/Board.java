@@ -355,7 +355,7 @@ public class Board {
                 gameBoard[j][i] = new Cell(false,false);
             }
         }
-
+        gameBoard[19][26] = new Cell(true, false);
         
     }
 

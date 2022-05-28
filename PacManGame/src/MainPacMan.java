@@ -1,147 +1,23 @@
 import java.awt.*;
  import java.awt.event.*;
- import java.awt.image.BufferedImage;
- import java.io.File;
- import java.io.IOException;
-
- import java.io.*;
  import java.util.*;
- import javax.imageio.ImageIO;
  import javax.swing.*;
- import javax.swing.JButton;
  import javax.swing.JFrame;
  import javax.swing.ImageIcon;
- /*
- public class MainPacMan implements ActionListener{
-     private ImageIcon lasagna;
-     private JLabel myLabel;
-     private JPanel panel;
-     private JButton startButton;
-
-     public MainPacMan() throws IOException {
-        //Setting JFrame
-        JFrame frame= new JFrame("PacMan by AP, AV, JI, HN");   
-        frame.setSize(1000,1000);            
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
-        //Setting background
-		JPanel backgroundPanel=new JPanel();  
-        backgroundPanel.setBounds(0, 0, 800, 800);
-		backgroundPanel.setLayout(new FlowLayout());      
-		BufferedImage myPicture = ImageIO.read(new File("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\pacManBoard.png"));
-        Image dimg = myPicture.getScaledInstance(800, 800,Image.SCALE_SMOOTH);
-		JLabel picLabel = new JLabel(new ImageIcon(dimg));
-		backgroundPanel.add(picLabel);
-		frame.add(backgroundPanel);
-        //Setting start button
-        JPanel startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(0, 800, 800, 100);
-        ImageIcon startImage = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\startButton.jpg");
-        startButton = new JButton();
-        startButton.setBounds(0, 800, 800, 100);
-        startButton.addActionListener(this);
-        startButton.setText("START");
-        startButton.setIcon(startImage);
-        startButton.setHorizontalTextPosition(JButton.CENTER);
-        startButton.setVerticalTextPosition(JButton.BOTTOM);
-        startButton.setFocusable(false);
-        frame.setVisible(true); 
-        startButtonPanel.add(startButton);
-        frame.add(startButtonPanel);
-        //Setting animation based on user input
-        JFrame temp = new JFrame();
-        animationBasedOnInput playerAnimation = new animationBasedOnInput();
-        frame.add(playerAnimation);
-        temp.add(playerAnimation);
-        temp.setVisible(true);
-        temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        temp.setSize(800,800);
-    }
-    
-     /*private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>();
-     private static int score = 0;
-     private static int bluetimer = 0;
-     private static int numlives = 3;
-     private static javax.swing.Timer timer;
-     private static Board board = new Board();
-     private static Player p = new Player("", new Image[2], 1, 1, 1,1);
-
-     public static void turn(){
-         ActionListener taskPerformer = new ActionListener() {
-             public void actionPerformed(ActionEvent evt){
-                 for (Ghost g: ghosts){
-                     if (p.collidedWithMoveable(g)){
-                         if (bluetimer>0){
-                             score+=200;
-                         }
-                         else {
-                            numlives--;
-                            checkLives();
-                             //board.reset
-                             try {
-                                Thread.sleep(3000);
-                            } catch (InterruptedException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-                             p.turnRight();
-                            score+=10;
-                            }
-                    }
-                 if (board.getCell(getIntX(), getIntY()).getContainsBigFood()){
-                    eatFood();
-                    score+=25;
-                    for (Ghost h: ghosts){
-                        h.turnBlue();
-                    }
-                    bluetimer = 20;
-                }
-                if (board.getCell(getIntX(), getIntY()).getContainsFood()){
-                    eatFood();
-                    score+=10;
-                }
-                 bluetimer--;
-                 if (bluetimer == 0){
-                     for (Ghost h: ghosts){
-                         h.turnNormal();
-                     }
-                 }
-                 checkExit();
-                 }
-             } 
-     };
-     timer = new javax.swing.Timer(500, taskPerformer);
-    }
-
- 
- 
-
-     public static void main(String args[]) throws IOException
-     {
-         //new UserInput();
-         new MainPacMan();
-         board.drawBoard(g);
-         //mainAction();
-         //new Animation();
-     }
-}*/
 public class MainPacMan extends JPanel implements KeyListener{
 	private static int garfx = 25;
 	private static int garfy = 25;
     private static int prevgarfx = 0;
     private static int prevgarfy = 0;
-	private static int nermx = 325;
-	private static int nermy = 350;
+    private static ArrayList<Ghost> ghosts = new ArrayList<Ghost>(Arrays.asList(new Ghost(325, 350), new Ghost(350, 350), new Ghost(325, 375), new Ghost(350, 375)));
     private static int dir = 0;
 	private static javax.swing.Timer timer;
 	private static JFrame jf = new JFrame();
     private static Board board = new Board();
     private static int score = 0;
     private static int lives = 3;
-    private static int bluetimer = 0;
-    private static boolean isBlue = false;
-    private static int nermdir = 2;
     private static int speed = 50;
+    private static int bluetimer = 0;
 	
     public MainPacMan(){
         addKeyListener(this);
@@ -158,7 +34,7 @@ public class MainPacMan extends JPanel implements KeyListener{
         return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleUpDown.jpg");
     }
 
-    public static ImageIcon pickGhostImage(int direc, boolean isblue){
+    public static ImageIcon pickGhostImage(int direc, boolean isBlue){
         if (direc == 0){
             if (isBlue){
                 return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveR.png");
@@ -176,7 +52,6 @@ public class MainPacMan extends JPanel implements KeyListener{
         }
         return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleUpDown.jpg");
     }
-
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		// ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
@@ -192,7 +67,7 @@ public class MainPacMan extends JPanel implements KeyListener{
             }
         }*/
         //i.paintIcon(this, g, 0, 0);
-		ImageIcon i = new ImageIcon("finalProjectAPCS/Media/newBoard.png");
+		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\newBoard.png");
 		// ImageIcon i = new ImageIcon("finalProjectAPCS/Media/blackCell.jpg");
         // ImageIcon k = new ImageIcon("finalProjectAPCS/Media/blueCell.jpg");
         // for (int a = 0; a < 28; a++) {
@@ -219,14 +94,18 @@ public class MainPacMan extends JPanel implements KeyListener{
                 }
             }
         }
-        ImageIcon nerm = pickGhostImage(nermdir, isBlue);
-		nerm.paintIcon(this, g, nermx, nermy);
+        for (Ghost G : ghosts){
+            ImageIcon nerm = pickGhostImage(G.getDirection(), G.isBlue());
+		    nerm.paintIcon(this, g, G.getX(), G.getY());
+        }
+    
 	}
 	
 	public static void main(String[] args) {
         System.out.println("Select a speed (milliseconds per step): ");
         Scanner sc = new Scanner(System.in);
         speed = sc.nextInt();
+        sc.close();
 		MainPacMan p = new MainPacMan();
 		jf.setTitle("Pacman (Garfield Edition)");
 		jf.setVisible(true);
@@ -246,7 +125,10 @@ public class MainPacMan extends JPanel implements KeyListener{
         if (board.getCell(x, y).getContainsBigFood()){
             score+=50;
             bluetimer = (1000/speed)*10;
-            isBlue = true;
+            //isBlue = true;
+            for (Ghost G : ghosts){
+                G.setIsBlue(true);
+            }
             board.getCell(x, y).setBigFood(false);
         }
     }
@@ -268,7 +150,10 @@ public class MainPacMan extends JPanel implements KeyListener{
         }
     }
 
-    public static void moveGhost(){
+    public static void moveGhost(Ghost G){
+        int nermx = G.getX();
+        int nermy = G.getY();
+        int nermdir = G.getDirection();
         ArrayList<Integer> posposses = new ArrayList<Integer>();
         boolean rightclear = (nermx/25<=26)&&(!board.getCell(nermy/25, (nermx/25)+1).getWall());
         boolean leftclear = (nermx/25>=1)&&(!board.getCell(nermy/25, (nermx/25)-1).getWall());
@@ -276,19 +161,19 @@ public class MainPacMan extends JPanel implements KeyListener{
         boolean upclear = (nermy/25<=26)&&(!board.getCell((nermy/25)+1, nermx/25).getWall());
         if (rightclear){
             posposses.add(0);
-            if(nermdir==0)nermx+=25;
+            if(nermdir==0)G.setLocation(nermx+25, nermy);//nermx+=25;
         }
         if (leftclear){
             posposses.add(1);
-            if(nermdir==1)nermx-=25;
+            if(nermdir==1)G.setLocation(nermx-25, nermy);//nermx-=25;
         }
         if (downclear){
             posposses.add(2);
-            if(nermdir==2)nermy-=25;
+            if(nermdir==2)G.setLocation(nermx, nermy-25);//nermy-=25;
         }
         if (upclear){
             posposses.add(3);
-            if(nermdir==3)nermy+=25;
+            if(nermdir==3)G.setLocation(nermx, nermy+25);//nermy+=25;
         }
         boolean a = nermdir==0&&!rightclear;
         boolean b = nermdir==1&&!leftclear;
@@ -296,7 +181,7 @@ public class MainPacMan extends JPanel implements KeyListener{
         boolean d = nermdir==3&&!upclear;
         if (a||b||c||d){
             int num = (int) (Math.random()*(posposses.size()));
-            nermdir = posposses.get(num);
+            G.setDirection(posposses.get(num));//nermdir = posposses.get(num);
         }
     }
     
@@ -305,12 +190,19 @@ public class MainPacMan extends JPanel implements KeyListener{
             public void actionPerformed(ActionEvent evt){
                 movePlayer();
                 //nermx-=25;
-                moveGhost();
+                //moveGhost();
+                for (Ghost G : ghosts){
+                    moveGhost(G);
+                }
                 eatFood(garfy/25, garfx/25);
                 jf.repaint();
                 checXit();
                 bluetimer--;
-                isBlue = bluetimer>0;
+                if (bluetimer<=0){
+                    for (Ghost G : ghosts){
+                        G.setIsBlue(false);
+                    }
+                }
             } 
     };
     	timer = new javax.swing.Timer(speed, taskPerformer);
@@ -327,28 +219,40 @@ public class MainPacMan extends JPanel implements KeyListener{
             timer.stop();
             //pull up loser end page
         }
-        boolean a = (garfx == nermx)&&(prevgarfx == garfx)&&(prevgarfy == nermy);
-        boolean b = (garfy == nermy)&&(prevgarfy == garfy)&&(prevgarfx == nermx);
-        boolean c = (garfx == nermx)&&(garfy == nermy);
-		if (c||a||b){
-            if (isBlue){
+        for (Ghost G : ghosts){
+            int nermx = G.getX();
+            int nermy = G.getY();
+            boolean a = (garfx == nermx)&&(prevgarfx == garfx)&&(prevgarfy == nermy);
+            boolean b = (garfy == nermy)&&(prevgarfy == garfy)&&(prevgarfx == nermx);
+            boolean c = (garfx == nermx)&&(garfy == nermy);
+		    if (c||a||b){
+                if (G.isBlue()){
                 score+=200;
-                bluetimer = 1;
-                nermy = 350;
-                nermx = 325;
+                G.setIsBlue(false);
+                G.setLocation(325, 350);
+                G.setDirection(2);
+                break;
+                }
+                else{
+                    lives--;
+                    dir = 0;
+                    G.setDirection(2);
+                    garfx = 0;
+                    garfy = 25;
+                    //nermx = 325;
+                    //nermy = 350;
+                    ghosts.get(0).setLocation(325, 350);
+                    ghosts.get(1).setLocation(350, 350);
+                    ghosts.get(2).setLocation(325, 375);
+                    ghosts.get(3).setLocation(350, 375);
+                    for (Ghost H : ghosts){
+                        H.setDirection(2);
+                        H.setIsBlue(false);
+                    }
+                }
             }
-            else{
-                lives--;
-                dir = 0;
-                nermdir = 2;
-                garfx = 0;
-                garfy = 25;
-                nermx = 325;
-                nermy = 350;
-            }
-		}
-
-	}
+		    }
+        }
     
     public void up(){
         dir=2;
