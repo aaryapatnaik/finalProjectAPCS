@@ -4,7 +4,7 @@ import java.awt.*;
  import javax.swing.*;
  import javax.swing.JFrame;
  import javax.swing.ImageIcon;
-public class MainPacMan extends JPanel implements KeyListener{
+public class MainPacMan extends JPanel implements KeyListener, ActionListener{
 	private static int garfx = 25;
 	private static int garfy = 25;
     private static int prevgarfx = 0;
@@ -18,6 +18,9 @@ public class MainPacMan extends JPanel implements KeyListener{
     private static int lives = 3;
     private static int speed = 50;
     private static int bluetimer = 0;
+    private JButton easyButton;
+    private JButton medButton;
+    private JButton hardButton;
 	
     public MainPacMan(){
         addKeyListener(this);
@@ -101,7 +104,65 @@ public class MainPacMan extends JPanel implements KeyListener{
     
 	}
 	
+    public void initStart(){
+        //Setting JFrame
+        JFrame frame = new JFrame();
+        JPanel backgroundPanel=new JPanel();  
+        backgroundPanel.setBounds(0, 0, 700, 700);
+         backgroundPanel.setLayout(new FlowLayout());      
+         ImageIcon backgroundImgStart = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmStart.jpg");
+         JLabel picLabel = new JLabel(backgroundImgStart);
+         backgroundPanel.add(picLabel);
+
+        JPanel easyPanel = new JPanel();
+        easyPanel.setBounds(100, 500, 100, 100);
+        ImageIcon easyImage = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmEasy.jpg");
+        easyButton = new JButton(); 
+        easyButton.setBounds(100, 500, 100, 100);
+        easyButton.addActionListener(this);
+        easyButton.setIcon(easyImage);
+        easyButton.setHorizontalTextPosition(JButton.CENTER);
+        easyButton.setVerticalTextPosition(JButton.BOTTOM);
+        easyButton.setFocusable(false);
+        easyPanel.add(easyButton);   
+
+        JPanel medPanel = new JPanel();
+        medPanel.setBounds(300, 500, 100, 100);
+        ImageIcon medImage = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmMed.jpg");
+        medButton = new JButton(); 
+        medButton.setBounds(300, 500, 100, 100);
+        medButton.addActionListener(this);
+        medButton.setIcon(medImage);
+        medButton.setHorizontalTextPosition(JButton.CENTER);
+        medButton.setVerticalTextPosition(JButton.BOTTOM);
+        medButton.setFocusable(false);
+        medPanel.add(medButton);   
+
+        JPanel hardPanel = new JPanel();
+        hardPanel.setBounds(500, 500, 100, 100);
+        ImageIcon hardImage = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmHard.jpg");
+        hardButton = new JButton(); 
+        hardButton.setBounds(500, 500, 100, 100);
+        hardButton.addActionListener(this);
+        hardButton.setIcon(hardImage);
+        hardButton.setHorizontalTextPosition(JButton.CENTER);
+        hardButton.setVerticalTextPosition(JButton.BOTTOM);
+        hardButton.setFocusable(false);
+        hardPanel.add(hardButton);   
+        
+     frame.add(backgroundPanel);
+     frame.add(easyPanel);
+     frame.add(medPanel);
+     frame.add(hardPanel);
+     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     frame.setSize(new Dimension(700,700));
+     frame.getContentPane().setBackground(Color.BLACK);
+     frame.setLayout(null);
+     frame.setVisible(true);
+    }
+
 	public static void main(String[] args) {
+        initStart();
         System.out.println("Select a speed (milliseconds per step): ");
         Scanner sc = new Scanner(System.in);
         speed = sc.nextInt();
@@ -297,6 +358,19 @@ public class MainPacMan extends JPanel implements KeyListener{
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == easyButton) {
+            System.out.println("easy clicked");
+        }
+        else if (event.getSource() == medButton) {
+            System.out.println("med clicked");
+        }
+        else if (event.getSource() == hardButton) {
+            System.out.println("hard clicked");
+        }
     }
 
 }
