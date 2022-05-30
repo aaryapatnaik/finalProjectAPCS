@@ -2,9 +2,9 @@ import java.awt.*;
  import java.awt.event.*;
  import java.util.*;
  import javax.swing.*;
- import javax.swing.JFrame;
- import javax.swing.ImageIcon;
-public class MainPacMan extends JPanel implements KeyListener, ActionListener{
+import javax.swing.Timer;
+import javax.swing.plaf.DimensionUIResource;
+public class MainPacMan extends JPanel implements KeyListener{
 	private static int garfx = 25;
 	private static int garfy = 25;
     private static int prevgarfx = 0;
@@ -18,9 +18,7 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
     private static int lives = 3;
     private static int speed = 50;
     private static int bluetimer = 0;
-    private JButton easyButton = new JButton();
-    private JButton medButton = new JButton();
-    private JButton hardButton = new JButton();
+    private static javax.swing.Timer t2;
 	
     public MainPacMan(){
         addKeyListener(this);
@@ -29,70 +27,46 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
     }
     public static ImageIcon pickPlayerImage(int dir){
         if (dir == 0){
-            return new ImageIcon("Media/Garfield/Garf/garfIdleRight.jpg");
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
         }
         else if (dir == 1){
-            return new ImageIcon("Media/Garfield/Garf/garfIdleLeft.jpg");
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleLeft.jpg");
         }
-        return new ImageIcon("Media/Garfield/Garf/garfIdleUpDown.jpg");
+        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleUpDown.jpg");
     }
 
     public static ImageIcon pickGhostImage(int direc, boolean isBlue){
         if (direc == 0){
             if (isBlue){
-                return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveR.png");
+                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveR.png");
             }
-            return new ImageIcon("Media/Garfield/Nermal/nermalIdleRight.jpg");
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleRight.jpg");
         }
         else if (direc == 1){
             if (isBlue){
-                return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveL.jpeg");
+                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveL.jpeg");
             }
-            return new ImageIcon("Media/Garfield/Nermal/nermalIdleLeft.jpg");
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleLeft.jpg");
         }
         if (isBlue){
-            return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveUD.png");
+            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveUD.png");
         }
-        return new ImageIcon("Media/Garfield/Nermal/nermalIdleUpDown.jpg");
+        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleUpDown.jpg");
     }
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		// ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\pacManBoard.png");
-		/*ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\blackCell.jpg");
-        ImageIcon k = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\blueCell.jpg");
-        for (int a = 0; a < 28; a++) {
-            for (int b = 0; b < 28; b++) {
-                if ((board.getCell(a,b)).getWall()) {
-                    k.paintIcon(this,g,(b*25), (a*25));
-                } else if (!(board.getCell(a,b)).getWall()) {
-                    i.paintIcon(this,g,(b*25), (a*25));
-                }
-            }
-        }*/
-        //i.paintIcon(this, g, 0, 0);
-		ImageIcon i = new ImageIcon("Media/newBoard.png");
-		// ImageIcon i = new ImageIcon("finalProjectAPCS/Media/blackCell.jpg");
-        // ImageIcon k = new ImageIcon("finalProjectAPCS/Media/blueCell.jpg");
-        // for (int a = 0; a < 28; a++) {
-        //     for (int b = 0; b < 28; b++) {
-        //         if ((board.getCell(a,b)).getWall()) {
-        //             k.paintIcon(this,g,(b*25), (a*25));
-        //         } else if (!(board.getCell(a,b)).getWall()) {
-        //             i.paintIcon(this,g,(b*25), (a*25));
-        //         }
-        //     }
-        // }
+		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\newBoard.png");
         i.paintIcon(this, g, 0, 0);
 		ImageIcon garf = pickPlayerImage(dir);
 		garf.paintIcon(this, g, garfx, garfy);
         for (int x = 0; x <28; x++) {
             for (int j = 0; j <28; j++) {
                 if ((board.getCell(x, j)).getContainsFood()) {
-                    ImageIcon img = new ImageIcon("Media/smallLasagna.png");
+                    ImageIcon img = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\smallLasagna.png");
                     img.paintIcon(this, g, (j*25)+5, (x*25)+5);
                 }
                 if ((board.getCell(x, j)).getContainsBigFood()) {
-                    ImageIcon img2 = new ImageIcon("Media/bigLasagna.png");
+                    ImageIcon img2 = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\bigLasagna.png");
                     img2.paintIcon(this, g, j*25, x*25);
                 }
             }
@@ -103,87 +77,29 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
         }
     
 	}
-	
-    public class InitStart implements ActionListener {
-        //Setting JFrame
-        public InitStart() {
-            JFrame frame = new JFrame();
-            JPanel backgroundPanel=new JPanel();  
-            backgroundPanel.setBounds(0, 0, 700, 700);
-             backgroundPanel.setLayout(new FlowLayout());      
-             ImageIcon backgroundImgStart = new ImageIcon("Media/pmStart.jpg");
-             JLabel picLabel = new JLabel(backgroundImgStart);
-             backgroundPanel.add(picLabel);
-    
-            JPanel easyPanel = new JPanel();
-            easyPanel.setBounds(100, 500, 100, 100);
-            ImageIcon easyImage = new ImageIcon("Media/pmEasy.jpg");
-            easyButton.setBounds(100, 500, 100, 100);
-            easyButton.addActionListener(this);
-            easyButton.setIcon(easyImage);
-            easyButton.setHorizontalTextPosition(JButton.CENTER);
-            easyButton.setVerticalTextPosition(JButton.BOTTOM);
-            easyButton.setFocusable(false);
-            easyPanel.add(easyButton);   
-    
-            JPanel medPanel = new JPanel();
-            medPanel.setBounds(300, 500, 100, 100);
-            ImageIcon medImage = new ImageIcon("Media/pmMed.jpg");
-    
-            medButton.setBounds(300, 500, 100, 100);
-            medButton.addActionListener((ActionListener) this);
-            medButton.setIcon(medImage);
-            medButton.setHorizontalTextPosition(JButton.CENTER);
-            medButton.setVerticalTextPosition(JButton.BOTTOM);
-            medButton.setFocusable(false);
-            medPanel.add(medButton);   
-    
-            JPanel hardPanel = new JPanel();
-            hardPanel.setBounds(500, 500, 100, 100);
-            ImageIcon hardImage = new ImageIcon("Media/pmHard.jpg");
-    
-            hardButton.setBounds(500, 500, 100, 100);
-            hardButton.addActionListener((ActionListener) this);
-            hardButton.setIcon(hardImage);
-            hardButton.setHorizontalTextPosition(JButton.CENTER);
-            hardButton.setVerticalTextPosition(JButton.BOTTOM);
-            hardButton.setFocusable(false);
-            hardPanel.add(hardButton);   
-            
-         frame.add(backgroundPanel);
-         frame.add(easyPanel);
-         frame.add(medPanel);
-         frame.add(hardPanel);
-         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         frame.setSize(new Dimension(700,700));
-         frame.getContentPane().setBackground(Color.BLACK);
-         frame.setLayout(null);
-         frame.setVisible(true);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-            
-        }     
-    }
 
 	public static void main(String[] args) {
-        
-        System.out.println("Select a speed (milliseconds per step): ");
-        Scanner sc = new Scanner(System.in);
-        speed = sc.nextInt();
-        sc.close();
-		MainPacMan p = new MainPacMan();
-        p.new InitStart();
-		jf.setTitle("Pacman (Garfield Edition)");
-		jf.setVisible(true);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.add(p);
-		turn();
-		timer.setRepeats(true);
-		timer.start();
-		
+        startbutton sb = new startbutton();
+        ActionListener taskPerformer2 = new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                if (sb.gameHasStarted()){
+                    t2.stop();
+                    speed = sb.getSpeed();
+                    MainPacMan p = new MainPacMan();
+                    jf.setTitle("Pacman (Garfield Edition)");
+                    jf.setSize(new Dimension(700, 700));
+                    jf.setVisible(true);
+                    jf.setLocationRelativeTo(null);
+                    jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    jf.add(p);
+                    turn();
+                    timer.setRepeats(true);
+                    timer.start();
+                }
+            } 
+        };
+        t2 = new javax.swing.Timer(1000, taskPerformer2);
+        t2.start();
 	}
 	
     public static void eatFood(int x, int y){
@@ -273,7 +189,7 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
                     }
                 }
             } 
-    };
+        };
     	timer = new javax.swing.Timer(speed, taskPerformer);
    }
 	
@@ -366,25 +282,6 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
         
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == easyButton) {
-            //set speed to 250
-            //set starting screen visible = false
-            //set playing screen visible = true
-        }
-        else if (event.getSource() == medButton) {
-            //set speed to 175
-            //set starting screen visible = false
-            //set playing screen visible = true
-        }
-        else if (event.getSource() == hardButton) {
-            //set speed to 200
-            //set starting screen visible = false
-            //set playing screen visible = true
-        }
     }
 
 }
