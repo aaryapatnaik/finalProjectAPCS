@@ -18,9 +18,9 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
     private static int lives = 3;
     private static int speed = 50;
     private static int bluetimer = 0;
-    private JButton easyButton;
-    private JButton medButton;
-    private JButton hardButton;
+    private JButton easyButton = new JButton();
+    private JButton medButton = new JButton();
+    private JButton hardButton = new JButton();
 	
     public MainPacMan(){
         addKeyListener(this);
@@ -29,31 +29,31 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
     }
     public static ImageIcon pickPlayerImage(int dir){
         if (dir == 0){
-            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
+            return new ImageIcon("Media/Garfield/Garf/garfIdleRight.jpg");
         }
         else if (dir == 1){
-            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleLeft.jpg");
+            return new ImageIcon("Media/Garfield/Garf/garfIdleLeft.jpg");
         }
-        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleUpDown.jpg");
+        return new ImageIcon("Media/Garfield/Garf/garfIdleUpDown.jpg");
     }
 
     public static ImageIcon pickGhostImage(int direc, boolean isBlue){
         if (direc == 0){
             if (isBlue){
-                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveR.png");
+                return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveR.png");
             }
-            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleRight.jpg");
+            return new ImageIcon("Media/Garfield/Nermal/nermalIdleRight.jpg");
         }
         else if (direc == 1){
             if (isBlue){
-                return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveL.jpeg");
+                return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveL.jpeg");
             }
-            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleLeft.jpg");
+            return new ImageIcon("Media/Garfield/Nermal/nermalIdleLeft.jpg");
         }
         if (isBlue){
-            return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\ghostNermalMoveUD.png");
+            return new ImageIcon("Media/Garfield/Nermal/ghostNermalMoveUD.png");
         }
-        return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Nermal\\nermalIdleUpDown.jpg");
+        return new ImageIcon("Media/Garfield/Nermal/nermalIdleUpDown.jpg");
     }
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -70,7 +70,7 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
             }
         }*/
         //i.paintIcon(this, g, 0, 0);
-		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\newBoard.png");
+		ImageIcon i = new ImageIcon("Media/newBoard.png");
 		// ImageIcon i = new ImageIcon("finalProjectAPCS/Media/blackCell.jpg");
         // ImageIcon k = new ImageIcon("finalProjectAPCS/Media/blueCell.jpg");
         // for (int a = 0; a < 28; a++) {
@@ -88,11 +88,11 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
         for (int x = 0; x <28; x++) {
             for (int j = 0; j <28; j++) {
                 if ((board.getCell(x, j)).getContainsFood()) {
-                    ImageIcon img = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\smallLasagna.png");
+                    ImageIcon img = new ImageIcon("Media/smallLasagna.png");
                     img.paintIcon(this, g, (j*25)+5, (x*25)+5);
                 }
                 if ((board.getCell(x, j)).getContainsBigFood()) {
-                    ImageIcon img2 = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\bigLasagna.png");
+                    ImageIcon img2 = new ImageIcon("Media/bigLasagna.png");
                     img2.paintIcon(this, g, j*25, x*25);
                 }
             }
@@ -104,70 +104,78 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
     
 	}
 	
-    public void initStart(){
+    public class InitStart implements ActionListener {
         //Setting JFrame
-        JFrame frame = new JFrame();
-        JPanel backgroundPanel=new JPanel();  
-        backgroundPanel.setBounds(0, 0, 700, 700);
-         backgroundPanel.setLayout(new FlowLayout());      
-         ImageIcon backgroundImgStart = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmStart.jpg");
-         JLabel picLabel = new JLabel(backgroundImgStart);
-         backgroundPanel.add(picLabel);
+        public InitStart() {
+            JFrame frame = new JFrame();
+            JPanel backgroundPanel=new JPanel();  
+            backgroundPanel.setBounds(0, 0, 700, 700);
+             backgroundPanel.setLayout(new FlowLayout());      
+             ImageIcon backgroundImgStart = new ImageIcon("Media/pmStart.jpg");
+             JLabel picLabel = new JLabel(backgroundImgStart);
+             backgroundPanel.add(picLabel);
+    
+            JPanel easyPanel = new JPanel();
+            easyPanel.setBounds(100, 500, 100, 100);
+            ImageIcon easyImage = new ImageIcon("Media/pmEasy.jpg");
+            easyButton.setBounds(100, 500, 100, 100);
+            easyButton.addActionListener(this);
+            easyButton.setIcon(easyImage);
+            easyButton.setHorizontalTextPosition(JButton.CENTER);
+            easyButton.setVerticalTextPosition(JButton.BOTTOM);
+            easyButton.setFocusable(false);
+            easyPanel.add(easyButton);   
+    
+            JPanel medPanel = new JPanel();
+            medPanel.setBounds(300, 500, 100, 100);
+            ImageIcon medImage = new ImageIcon("Media/pmMed.jpg");
+    
+            medButton.setBounds(300, 500, 100, 100);
+            medButton.addActionListener((ActionListener) this);
+            medButton.setIcon(medImage);
+            medButton.setHorizontalTextPosition(JButton.CENTER);
+            medButton.setVerticalTextPosition(JButton.BOTTOM);
+            medButton.setFocusable(false);
+            medPanel.add(medButton);   
+    
+            JPanel hardPanel = new JPanel();
+            hardPanel.setBounds(500, 500, 100, 100);
+            ImageIcon hardImage = new ImageIcon("Media/pmHard.jpg");
+    
+            hardButton.setBounds(500, 500, 100, 100);
+            hardButton.addActionListener((ActionListener) this);
+            hardButton.setIcon(hardImage);
+            hardButton.setHorizontalTextPosition(JButton.CENTER);
+            hardButton.setVerticalTextPosition(JButton.BOTTOM);
+            hardButton.setFocusable(false);
+            hardPanel.add(hardButton);   
+            
+         frame.add(backgroundPanel);
+         frame.add(easyPanel);
+         frame.add(medPanel);
+         frame.add(hardPanel);
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         frame.setSize(new Dimension(700,700));
+         frame.getContentPane().setBackground(Color.BLACK);
+         frame.setLayout(null);
+         frame.setVisible(true);
+        }
 
-        JPanel easyPanel = new JPanel();
-        easyPanel.setBounds(100, 500, 100, 100);
-        ImageIcon easyImage = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmEasy.jpg");
-        easyButton = new JButton(); 
-        easyButton.setBounds(100, 500, 100, 100);
-        easyButton.addActionListener(this);
-        easyButton.setIcon(easyImage);
-        easyButton.setHorizontalTextPosition(JButton.CENTER);
-        easyButton.setVerticalTextPosition(JButton.BOTTOM);
-        easyButton.setFocusable(false);
-        easyPanel.add(easyButton);   
-
-        JPanel medPanel = new JPanel();
-        medPanel.setBounds(300, 500, 100, 100);
-        ImageIcon medImage = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmMed.jpg");
-        medButton = new JButton(); 
-        medButton.setBounds(300, 500, 100, 100);
-        medButton.addActionListener(this);
-        medButton.setIcon(medImage);
-        medButton.setHorizontalTextPosition(JButton.CENTER);
-        medButton.setVerticalTextPosition(JButton.BOTTOM);
-        medButton.setFocusable(false);
-        medPanel.add(medButton);   
-
-        JPanel hardPanel = new JPanel();
-        hardPanel.setBounds(500, 500, 100, 100);
-        ImageIcon hardImage = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/new!!/finalProjectAPCS/Media/pmHard.jpg");
-        hardButton = new JButton(); 
-        hardButton.setBounds(500, 500, 100, 100);
-        hardButton.addActionListener(this);
-        hardButton.setIcon(hardImage);
-        hardButton.setHorizontalTextPosition(JButton.CENTER);
-        hardButton.setVerticalTextPosition(JButton.BOTTOM);
-        hardButton.setFocusable(false);
-        hardPanel.add(hardButton);   
-        
-     frame.add(backgroundPanel);
-     frame.add(easyPanel);
-     frame.add(medPanel);
-     frame.add(hardPanel);
-     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     frame.setSize(new Dimension(700,700));
-     frame.getContentPane().setBackground(Color.BLACK);
-     frame.setLayout(null);
-     frame.setVisible(true);
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            
+        }     
     }
 
 	public static void main(String[] args) {
-        initStart();
+        
         System.out.println("Select a speed (milliseconds per step): ");
         Scanner sc = new Scanner(System.in);
         speed = sc.nextInt();
         sc.close();
 		MainPacMan p = new MainPacMan();
+        p.new InitStart();
 		jf.setTitle("Pacman (Garfield Edition)");
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
