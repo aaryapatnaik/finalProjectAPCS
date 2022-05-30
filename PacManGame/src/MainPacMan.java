@@ -363,13 +363,19 @@ public class MainPacMan extends JPanel implements KeyListener, ActionListener{
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == easyButton) {
-            System.out.println("easy clicked");
+            //set speed to 250
+            //set starting screen visible = false
+            //set playing screen visible = true
         }
         else if (event.getSource() == medButton) {
-            System.out.println("med clicked");
+            //set speed to 175
+            //set starting screen visible = false
+            //set playing screen visible = true
         }
         else if (event.getSource() == hardButton) {
-            System.out.println("hard clicked");
+            //set speed to 200
+            //set starting screen visible = false
+            //set playing screen visible = true
         }
     }
 
