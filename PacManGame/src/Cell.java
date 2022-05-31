@@ -27,6 +27,10 @@ public class Cell {
         containsBigFood = cf;
     }
 
+    public void setWall (boolean w) {
+        wall = w;
+    }
+
     public boolean getWall() {
         return wall; //jutin was here
     }

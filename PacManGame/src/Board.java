@@ -368,6 +368,16 @@ public class Board {
                 gameBoard[i][j] = new Cell (true, false);
             }
         }
+        for (int i = 15; i <= 19; i++) {
+            for (int j = 1; j <= 5; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
+        for (int i = 15; i <= 19; i++) {
+            for (int j = 23; j <= 27; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
 
         
     }
@@ -405,6 +415,22 @@ public class Board {
                 }
             }
         }
+    }
+
+    public boolean notInSpawn(int x, int y) {
+        for (int i = 10; i <= 17; i++) {
+            for (int j = 12; j <= 16; j++) {
+                if (i == x && j == y) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public void closeWall() {
+        gameBoard[12][13].setWall(true);
+        gameBoard[12][14].setWall(true);
     }
 
 }
