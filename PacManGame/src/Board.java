@@ -368,6 +368,16 @@ public class Board {
                 gameBoard[i][j] = new Cell (true, false);
             }
         }
+        for (int i = 15; i <= 19; i++) {
+            for (int j = 1; j <= 5; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
+        for (int i = 15; i <= 19; i++) {
+            for (int j = 23; j <= 27; j++) {
+                gameBoard[i][j] = new Cell (true, false);
+            }
+        }
 
         
     }
