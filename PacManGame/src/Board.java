@@ -417,15 +417,15 @@ public class Board {
         }
     }
 
-    public boolean inSpawningPoint(int x, int y) {
+    public boolean notInSpawn(int x, int y) {
         for (int i = 10; i <= 17; i++) {
             for (int j = 12; j <= 16; j++) {
                 if (i == x && j == y) {
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     public void closeWall() {
