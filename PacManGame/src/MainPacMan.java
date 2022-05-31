@@ -209,7 +209,7 @@ public class MainPacMan extends JPanel implements KeyListener{
             timer.stop();
             jf.setVisible(false);
             EndGame eg = new EndGame(true);
-            System.out.println(score);
+            System.out.println("Score "+score);
             //pull up victory end page
         }
         if (lives == 0){
