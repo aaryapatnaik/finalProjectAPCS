@@ -181,6 +181,14 @@ public class MainPacMan extends JPanel implements KeyListener{
                     moveGhost(G);
                 }
                 eatFood(garfy/25, garfx/25);
+                /*boolean temp = true;
+                temp = temp && board.notInSpawn(garfy/25, garfx/25);
+                for (Ghost gh : ghosts){
+                    temp = temp && board.notInSpawn(gh.getY()/25, gh.getX()/25);
+                }
+                if (temp){
+                    board.closeWall();
+                }*/
                 jf.repaint();
                 checXit();
                 bluetimer--;
@@ -189,6 +197,7 @@ public class MainPacMan extends JPanel implements KeyListener{
                         G.setIsBlue(false);
                     }
                 }
+
             } 
         };
     	timer = new javax.swing.Timer(speed, taskPerformer);
