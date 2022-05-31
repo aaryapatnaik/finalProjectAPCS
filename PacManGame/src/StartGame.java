@@ -13,13 +13,13 @@ public class StartGame implements ActionListener{
         JPanel backgroundPanel=new JPanel();  
         backgroundPanel.setBounds(0, 0, 700, 700);
          backgroundPanel.setLayout(new FlowLayout());      
-         ImageIcon backgroundImgStart = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\pmStart.jpg");
+         ImageIcon backgroundImgStart = new ImageIcon("Media\\pmStart.jpg");
          JLabel picLabel = new JLabel(backgroundImgStart);
          backgroundPanel.add(picLabel);
 
         JPanel easyPanel = new JPanel();
         easyPanel.setBounds(100, 500, 100, 100);
-        ImageIcon easyImage = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\pmEasy.jpg");
+        ImageIcon easyImage = new ImageIcon("Media\\pmEasy.jpg");
         easyButton.setBounds(100, 500, 100, 100);
         easyButton.setIcon(easyImage);
         easyButton.addActionListener(this);
@@ -30,7 +30,7 @@ public class StartGame implements ActionListener{
 
         JPanel medPanel = new JPanel();
         medPanel.setBounds(300, 500, 100, 100);
-        ImageIcon medImage = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\pmMed.jpg");
+        ImageIcon medImage = new ImageIcon("Media\\pmMed.jpg");
         medButton.setBounds(300, 500, 100, 100);
         medButton.setIcon(medImage);
         medButton.addActionListener(this);
@@ -41,7 +41,7 @@ public class StartGame implements ActionListener{
 
         JPanel hardPanel = new JPanel();
         hardPanel.setBounds(500, 500, 100, 100);
-        ImageIcon hardImage = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\pmHard.jpg"); 
+        ImageIcon hardImage = new ImageIcon("Media\\pmHard.jpg"); 
         hardButton.setBounds(500, 500, 100, 100);
         hardButton.setIcon(hardImage);
         hardButton.addActionListener(this);

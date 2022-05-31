@@ -9,10 +9,10 @@ public class EndGame {
             backgroundPanel.setLayout(new FlowLayout());
             ImageIcon backgroundImgEnd;
             if (userWon == true) {      
-                backgroundImgEnd = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/ccheck/pm.jpg");
+                backgroundImgEnd = new ImageIcon("Media\\Garfield\\pmWinner2.jpg");
             }
             else {
-                backgroundImgEnd = new ImageIcon("/Users/aarya/Desktop/AP_CompSci_FinalProject/final final/finalProjectAPCS/Media/pmWinner.jpg");
+                backgroundImgEnd = new ImageIcon("Media\\Garfield\\pmLoser2.jpg");
             }
             JLabel picLabel = new JLabel(backgroundImgEnd);
             backgroundPanel.add(picLabel);
