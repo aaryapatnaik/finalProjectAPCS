@@ -79,7 +79,7 @@ public class MainPacMan extends JPanel implements KeyListener{
 	}
 
 	public static void main(String[] args) {
-        startbutton sb = new startbutton();
+        StartGame sb = new StartGame();
         ActionListener taskPerformer2 = new ActionListener() {
             public void actionPerformed(ActionEvent evt){
                 if (sb.gameHasStarted()){
@@ -100,6 +100,7 @@ public class MainPacMan extends JPanel implements KeyListener{
         };
         t2 = new javax.swing.Timer(1000, taskPerformer2);
         t2.start();
+        
 	}
 	
     public static void eatFood(int x, int y){

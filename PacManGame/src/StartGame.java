@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class startbutton implements ActionListener{
+public class StartGame implements ActionListener{
     private JFrame frame;
     private JButton easyButton = new JButton();
     private JButton medButton = new JButton();
     private JButton hardButton = new JButton();
     private int speed = 50;
     private boolean started = false;
-    public startbutton(){
+    public StartGame(){
         frame = new JFrame();
         JPanel backgroundPanel=new JPanel();  
         backgroundPanel.setBounds(0, 0, 700, 700);
