@@ -417,4 +417,20 @@ public class Board {
         }
     }
 
+    public boolean inSpawningPoint(int x, int y) {
+        for (int i = 10; i <= 17; i++) {
+            for (int j = 12; j <= 16; j++) {
+                if (i == x && j == y) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void closeWall() {
+        gameBoard[12][13].setWall(true);
+        gameBoard[12][14].setWall(true);
+    }
+
 }

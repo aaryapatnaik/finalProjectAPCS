@@ -26,7 +26,6 @@ public class MainPacMan extends JPanel implements KeyListener{
         setFocusTraversalKeysEnabled(false);
     }
     public static ImageIcon pickPlayerImage(int dir){
-        //finalProjectAPCS/Media/Garfield/Garf/garfIdleRight.jpg
         if (dir == 0){
             return new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\Garfield\\Garf\\garfIdleRight.jpg");
         }
@@ -56,7 +55,7 @@ public class MainPacMan extends JPanel implements KeyListener{
     }
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		ImageIcon i = new ImageIcon("finalProjectAPCS\\Media\\newBoard.png");
+		ImageIcon i = new ImageIcon("C:\\Users\\abhir\\New folder\\finalProjectAPCS\\Media\\newBoard.png");
         i.paintIcon(this, g, 0, 0);
 		ImageIcon garf = pickPlayerImage(dir);
 		garf.paintIcon(this, g, garfx, garfy);
