@@ -16,7 +16,15 @@ public class EndGame {
             }
             JLabel picLabel = new JLabel(backgroundImgEnd);
             backgroundPanel.add(picLabel);
+
+            JPanel scorePanel = new JPanel();
+              scorePanel.add(new JLabel("Score: "));
+              scorePanel.setBackground(Color.yellow);
+              backgroundPanel.setBounds(300, 700, 100, 50);
+              frame.add(backgroundPanel);
+            
             frame.add(backgroundPanel);
+            frame.add(scorePanel);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(new Dimension(700,700));
             frame.setLocationRelativeTo(null);
